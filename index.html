@@ -10,45 +10,7 @@
     <meta property="og:title" content="vipnode " />
     <meta property="og:description" content="Reserve a spot for your Geth light client, powered by a smart contract." />
 
-    <style>
-        body {
-          font-family: sans-serif;
-        }
-        article {
-            max-width: 800px;
-            margin: 0 auto;
-            color: #333;
-        }
-
-        form {
-            border-left: 2px solid;
-        }
-        input {
-            padding: 2px 5px;
-        }
-        input[name="amount"] {
-            width: 5em;
-            text-align: center;
-        }
-        small {
-            margin-left: 0.5em;
-            color: #666;
-        }
-        pre {
-            overflow-x: scroll;
-            background: rgb(240, 240, 240);
-        }
-        code {
-            background: rgb(240, 240, 240);
-            padding: 0 2px;
-        }
-        .warning {
-            background: #ffed84;
-            padding: 5px;
-            font-weight: bold;
-            color: rgba(0,0,0,0.8);
-        }
-    </style>
+    <link rel="stylesheet" href="css/base.css" />
   </head>
   <body>
 
@@ -73,20 +35,8 @@
           <p>That will print your NodeID string.</p>
 
           <h3 id="reserve">Reserve your vipnode</h3>
-          <form>
-              <p class="warning">Coming soon, this form does not work yet.</p>
-              <ol>
-                  <li>
-                      <p>What is your enode? <input type="text" name="enode" placeholder="enode://..." /></p>
-                  </li>
-                  <li>
-                      <p>What would you like to pay for 30 days? <input type="text" name="amount" value="0.2" placeholder="0.2" /> in ETH</p>
-                  </li>
-                  <li>
-                      <p><input type="submit" value="Execute Smart Contract" /> <small>(requires <a href="https://metamask.io/">a web3-enabled browser</a>)</small></p>
-                  </li>
-              </ol>
-          </form>
+          <div id="contract-app">
+          </div>
 
           <h3 id="connect">Connect</h3>
           <p>Set your <code>&lt;datadir&gt;/geth/static-nodes.json</code> to:</p>
@@ -152,7 +102,8 @@
           <h3>Hatred? Vitriol?</h3>
           <p>You're looking for <a href="https://news.ycombinator.com" rel="nofollow">Hacker News</a>.</p>
       </article>
-    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
-    <script src="js/web3.js"></script>
 
+      <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+      <script src="js/web3.min.js"></script>
+      <script src="js/app.js"></script>
 </html>

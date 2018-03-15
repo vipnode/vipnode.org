@@ -1,0 +1,39 @@
+<html>
+  <head>
+    <title>vipnode | smart contract</title>
+
+    <link rel="stylesheet" href="css/base.css" />
+
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="js/web3.min.js"></script>
+
+  </head>
+  <body>
+
+    <div id="contract-app">
+      <form v-on:submit='submit' v-on:submit.prevent>
+        <ul class="messages" v-if="messages.length > 0">
+          <li v-for="msg in messages" :class="msg.kind">{{msg.body}}</li>
+        </ul>
+        <ol>
+          <li>
+            <p>What is your enode? <input type="text" v-model="enode" placeholder="enode://..." /></p>
+          </li>
+          <li>
+            <p>What would you like to pay for 30 days? <input type="text" v-model="amount" value="0.2" placeholder="0.2" /> in ETH</p>
+          </li>
+          <li>
+            <p><input type="submit" value="Execute Smart Contract" :disabled="loading" /> <small>(requires <a href="https://metamask.io/" target="_blank">a web3-enabled browser</a>)</small></p>
+          </li>
+        </ol>
+        <div class="messages" v-if="pendingTx">
+          <p class="success">
+            Transaction submitted. It can take a few minutes. <a :href="'https://etherscan.io/tx/' + pendingTx" target="_blank">Watch it here.</a>
+          </p>
+        </div>
+      </form>
+    </div>
+
+    <script src="js/app.js"></script>
+  </body>
+</html>
