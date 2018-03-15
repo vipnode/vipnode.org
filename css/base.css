@@ -1,11 +1,22 @@
 body {
     font-family: sans-serif;
 }
-iframe {
-    width: 100%;
-}
 a {
     color: rgba(30, 10, 60, 0.8);
+}
+h1 a {
+    text-decoration: none;
+}
+h1 {
+    margin: 1rem 0;
+}
+h2 {
+    margin-top: 2em;
+    padding-bottom: 2px;
+    color: #4a90e2;
+}
+iframe {
+    width: 100%;
 }
 article {
     max-width: 800px;
