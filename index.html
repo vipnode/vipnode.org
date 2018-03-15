@@ -1,0 +1,151 @@
+<html lang="en" prefix="og: http://ogp.me/ns#">
+  <head>
+    <title>vipnode - Reserve a spot for your Geth light client, connect instantly!</title>
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="shortcut icon" type="image/png" href="img/icon-32px.png" />
+    <meta charset="utf-8" />
+
+    <meta name="twitter:card" content="summary" />
+    <meta property="og:url" content="https://vipnode.shazow.net"/>
+    <meta property="og:title" content="vipnode " />
+    <meta property="og:description" content="Reserve a spot for your Geth light client, powered by a smart contract." />
+
+    <style>
+        article {
+            max-width: 800px;
+            margin: 0 auto;
+            color: #333;
+        }
+
+        form {
+            border-left: 2px solid;
+        }
+        input {
+            padding: 2px 5px;
+        }
+        input[name="amount"] {
+            width: 5em;
+            text-align: center;
+        }
+        small {
+            margin-left: 0.5em;
+            color: #666;
+        }
+        code {
+            background: rgba(0, 0, 0, 0.05);
+            padding: 0 2px;
+        }
+        .warning {
+            background: #ffed84;
+            padding: 5px;
+            font-weight: bold;
+            color: rgba(0,0,0,0.8);
+        }
+    </style>
+  </head>
+  <body>
+
+      <article>
+          <h1 id="vipnode"><a href="#vipnode">vipnode</a></h1>
+
+          <p>Reserve a spot for your Geth light client, powered by a smart contract.</p>
+          <p><strong>Status</strong>: Beta.</p>
+          <ol>
+              <li><strong>Pay what you want</strong> for 30 days access. (Only during beta)</li>
+              <li>Connect instantly using your reserved peer slot.</li>
+          </ol>
+          <h2 id="get-started">Get Started</h2>
+          <h3 id="your-ethereum-enode-id">Your Ethereum enode ID:</h3>
+
+          <p>When you start your Go Ethereum client, it prints out your enode ID. This
+              encodes the <em>public key</em> of your node that can be used for authentication.</p>
+          <p>It looks like this:</p>
+          <p><code>enode://6f8a80d143…b39763a4c0@123.123.123.123:30303?discport=30301</code></p>
+          <p>Alternatively, if you have a console to a running geth node, you can run:</p>
+          <p><code>admin.nodeInfo.enode</code></p>
+          <p>That will print your NodeID string.</p>
+
+          <h3 id="reserve">Reserve your vipnode</h3>
+          <form>
+              <p class="warning">Coming soon, this form does not work yet.</p>
+              <ol>
+                  <li>
+                      <p>What is your enode? <input type="text" name="enode" placeholder="enode://..." /></p>
+                  </li>
+                  <li>
+                      <p>What would you like to pay for 30 days? <input type="text" name="amount" value="0.2" placeholder="0.2" /> in ETH</p>
+                  </li>
+                  <li>
+                      <p><input type="submit" value="Execute Smart Contract" /> <small>(requires <a href="https://metamask.io/">a web3-enabled browser</a>)</small></p>
+                  </li>
+              </ol>
+          </form>
+
+          <h3 id="connect">Connect</h3>
+          <p>Set your <code>&lt;datadir&gt;/geth/static-nodes.json</code> to:</p>
+
+          <pre><code>[
+    "enode://77f8cdb327e0c6c94c57ea6764a2ddddfd08b557a9a15a78d2e9cc22a9528ede5b23fce9ddd8c4b4c90c4f790c58cf6ed516a699721f1fb29b09190f5b00c2c6@138.197.165.132:30303?discport=30301"
+]</code></pre>
+
+          <p>and restart your Ethereum client.</p>
+          <p>If you'd like to limit your client just to the vipnode, use the <code>--nodiscover</code>
+              flag.</p>
+      </article>
+      <article>
+
+          <h2>FAQ</h2>
+          <h3>Why?</h3>
+          <p>There are too many light clients on the Ethereum network and not enough full
+              nodes to service them all. On a bad day, it can take several hours to finally
+              connect to the network with a light client.</p>
+          <p>vipnode creates an incentive for more people to run full nodes and improve the
+              state of the Ethereum network as a whole.</p>
+          <h3>Does it work with Parity light clients? What about older Geth clients?</h3>
+          <p>Only geth v1.8.x and newer, for now.</p>
+          <h3>Any guarantees? What's the SLA? (Service Level Agreement)</h3>
+          <p>During the beta, there are no guarantees. There can be some downtime if
+              resources get tight and the VPS need to be upgraded. I'm not expecting more than
+              a few hours of downtime per month (but hopefully zero).</p>
+          <h3>Neat, how does it work?</h3>
+          <p>vipnode is running a modified go-ethereum node with a script that monitors the
+              smart contract for new paying nodes. When you pay, it adds your NodeID to the
+              trusted nodes set. When you connect with this NodeID, you get to bypass the
+              normal server limits and get to the front of the line.</p>
+          <p>Modifications are going to be submitted upstream once they're sufficiently
+              tested.</p>
+          <h3>Can I run my own vipnode? What does it cost?</h3>
+          <p>That's the goal! Everything is open source, but it's not packaged nicely yet.</p>
+          <p>Right now I'm running it on DigitalOcean for about $40/mo, which I hope will
+              handle at least a few dozen light client peers.</p>
+          <p>I'm collecting data on the resource requirements from this experiment which will
+              help inform the pricing in the future.</p>
+          <h3>Can I connect to a vipnode for free?</h3>
+          <p>Yes! Each vipnode also allocates at least 25 slots to regular
+              peers and several public light client peers. These numbers can
+              change in the future, but the goal is to be a good citizen of the
+              network and give back to everyone.</p>
+          <p>Add this vipnode as a "static peer" and grab one of the regular peer slots.</p>
+          <h3>My geth is stuck at "IPC endpoint opened", or I keep seeing "no suitable peers available"</h3>
+          <p>If you didn't pay for vipnode (or your 30 days expired), then that means there
+              aren't enough free connection slots available. You can keep waiting (it can take
+              a few hours), or <a href="#reserve">pay for vipnode access</a>.</p>
+          <p>If you paid for vipnode, make sure:</p>
+          <ol>
+              <li>You're connecting from the same enode ID as you specified in your payment</li>
+              <li>You added the vipnode enode to your <code>geth/static-nodes.json</code></li>
+          </ol>
+
+          <h2>About</h2>
+          <p>I am Andrey, or <a href="https://twitter.com/shazow" rel="nofollow">@shazow</a> on the Internet.</p>
+          <p>I build a lot of <a href="https://github.com/shazow">open source things</a>
+              and fun experiments like this one, or you might have seen the <a href="https://thousandetherhomepage.com" rel="nofollow">Thousand Ether Homepage</a>.</p>
+          <h3>Problems? Questions? Accolades?</h3>
+          <p>Email <a href="mailto:vipnode@shazow.net">vipnode@shazow.net</a>.</p>
+          <h3>Hatred? Vitriol?</h3>
+          <p>You're looking for <a href="https://news.ycombinator.com" rel="nofollow">Hacker News</a>.</p>
+      </article>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="js/web3.js"></script>
+
+</html>
