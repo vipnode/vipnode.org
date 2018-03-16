@@ -44,7 +44,8 @@ their light clients can connect instantly.
 - [x] Modified geth capable of dynamically adjusting trusted nodes set. ([Progress PR, not submitted yet](https://github.com/shazow/go-ethereum/pull/2))
 - [x] geth console javascript (otto-friendly) driver for monitoring smart
       contract and adjusting trusted slots.
-- [ ] DApp should announce how many slots are available, maybe provide vipnode stats in general.
+- [x] DApp "node is full" message.
+- [ ] DApp should announce how many slots are available, maybe provide vipnode live stats in general.
 - [ ] Package it up so other people can run their own vipnode.
 
 
