@@ -65,13 +65,40 @@ const app = new Vue({
         warning(msg) {
             this.messages.push({body: msg, kind: 'warning'});
         },
-        register(enode, amount) {
-            let contract;
+        info(msg) {
+            this.messages.push({body: msg, kind: 'info'});
+        },
+        getContract() {
+            if (this.contract) return this.contract;
             try {
-                contract = getContract();
+                this.contract = getContract();
+                return this.contract;
             } catch(e) {
-                return this.error('Failed to load smart contract.', e);
+                this.error('Failed to load smart contract. Make sure you have a web3-enabled browser.', e);
+                return;
             }
+        },
+        loadStatus(contract) {
+            contract.limitRegistered.call(function(err, limit) {
+                if (err) {
+                    return this.error('Failed to load vipnode status.', err);
+                }
+                contract.numRegistered.call(function(err, num) {
+                    if (err) {
+                        return this.error('Failed to load vipnode status.', err);
+                    }
+                    if (limit >= num) {
+                        return this.warning('vipnode is full! Please email the owner and politely ask to open more slots.')
+                    }
+                    this.info('Status loaded: ' + (limit-num) + ' slots currently available.');
+                }.bind(this));
+            }.bind(this));
+        },
+        register(enode, amount) {
+            const contract = this.getContract();
+            if (!contract) return;
+
+            this.loadStatus(contract);
 
             const weiAmount = web3.toWei(amount, 'ether');
             const enodeParts = enode.match(reNodeID);
@@ -90,7 +117,7 @@ const app = new Vue({
                 this.pendingTx = res;
                 console.log(res);
                 this.success('👍');
-            }.bind(this))
+            }.bind(this));
         },
     },
 });
