@@ -4,6 +4,8 @@ Connect instantly with your Ethereum Light Client to a premium VIPNode.
 
 **Status**: Beta. It's functional but the code is changing.
 
+Try it here: https://vipnode.shazow.net/
+
 
 ## How does it work?
 
@@ -42,13 +44,14 @@ their light clients can connect instantly.
 - [x] Modified geth capable of dynamically adjusting trusted nodes set. ([Progress PR, not submitted yet](https://github.com/shazow/go-ethereum/pull/2))
 - [x] geth console javascript (otto-friendly) driver for monitoring smart
       contract and adjusting trusted slots.
+- [ ] DApp should announce how many slots are available, maybe provide vipnode stats in general.
 - [ ] Package it up so other people can run their own vipnode.
 
 
 ### Future ideas
 
-- off-chain vipnode: For the current featureset, the smart contract is not very necessary. Could do the subscription app off-chain, but still accept ETH for payments (or even Stripe or whatever). Ideally this would be a standalone Go binary that you run next to your full node.
-- vipnode pools: A single vipnode pool (vippool?) that many full-node hosts can join and get proportional payout for how many light nodes they serve (and for how long). This is tricky to make a good user experience without requiring people to run custom clients. The current thought is to make a vipnode bootstrap server to load balance across many vipnodes, and a custom ethstats server that clients can use to track how much time each client spends on which vipnode to figure out appropriate payouts.
+- **vipnode off-chain**: For the current featureset, the smart contract is not very necessary. Could do the subscription app off-chain, but still accept ETH for payments (or even Stripe or whatever). Ideally this would be a standalone Go binary that you run next to your full node.
+- **vipnode pool**: A single vipnode pool (vippool?) that many full-node hosts can join and get proportional payout for how many light nodes they serve (and for how long). This is tricky to make a good user experience without requiring people to run custom clients. The current thought is to make a vipnode bootstrap server to load balance across many vipnodes, and a custom ethstats server that clients can use to track how much time each client spends on which vipnode to figure out appropriate payouts.
 
 
 ## License
