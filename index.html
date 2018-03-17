@@ -11,6 +11,22 @@
     <meta property="og:description" content="Reserve a spot for your Geth light client, powered by a smart contract." />
 
     <link rel="stylesheet" href="css/base.css?1" />
+
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-407051-18"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      switch (window.location.hostname) {
+        case "localhost":
+        case "127.0.0.1":
+          break;
+        default:
+          gtag('js', new Date());
+          gtag('config', 'UA-407051-18');
+      }
+    </script>
   </head>
   <body>
 
