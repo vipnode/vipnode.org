@@ -90,7 +90,7 @@ const app = new Vue({
                     if (err) {
                         return this.error('Failed to load vipnode status.', err);
                     }
-                    if (limit >= num) {
+                    if (limit <= num) {
                         return this.warning('vipnode is full! Please email the owner and politely ask to open more slots.')
                     }
                     this.info('Status loaded: ' + (limit-num) + ' slots currently available.');
