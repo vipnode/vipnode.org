@@ -27,6 +27,9 @@ article {
 form {
     border-left: 2px solid;
 }
+form p {
+    margin-left: 1.5em;
+}
 input {
     padding: 2px 5px;
 }
@@ -46,6 +49,9 @@ code {
     background: rgb(240, 240, 240);
     padding: 0 2px;
 }
+#intro {
+    line-height: 1.5em;
+}
 .messages {
     font-weight: bold;
     color: rgba(0,0,0,0.8);
@@ -61,6 +67,11 @@ code {
 }
 .success {
     background: #84ff97;
+}
+.highlight h3 {
+    background: rgba(255, 200, 0, 0.2);
+    margin: 0 -0.5em;
+    padding: 5px 0.5em;
 }
 ul.messages {
     list-style: none;

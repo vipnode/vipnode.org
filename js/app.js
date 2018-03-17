@@ -24,6 +24,9 @@ const app = new Vue({
           <li>
             <p><input type="submit" value="Execute Smart Contract" :disabled="loading" /> <small>(requires <a href="https://metamask.io/" target="_blank">a web3-enabled browser</a>)</small></p>
           </li>
+          <li>
+            <p><a href="#subscribe">Subscribe to updates</a></p>
+          </li>
         </ol>
         <div class="messages" v-if="pendingTx">
           <p class="success">

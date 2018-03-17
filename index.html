@@ -1,7 +1,6 @@
 <html lang="en" prefix="og: http://ogp.me/ns#">
   <head>
     <title>vipnode - Reserve a spot for your Geth light client, connect instantly!</title>
-    <link rel="stylesheet" href="css/base.css" />
     <link rel="shortcut icon" type="image/png" href="img/icon-32px.png" />
     <meta charset="utf-8" />
 
@@ -10,7 +9,7 @@
     <meta property="og:title" content="vipnode " />
     <meta property="og:description" content="Reserve a spot for your Geth light client, powered by a smart contract." />
 
-    <link rel="stylesheet" href="css/base.css?1" />
+    <link rel="stylesheet" href="css/base.css?2" />
 
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -33,12 +32,18 @@
       <article>
           <h1 id="vipnode">👑  <a href="/">vipnode</a> 👑</h1>
 
-          <p>Reserve a spot for your Go-Ethereum Light Client, powered by a smart contract.</p>
-          <p><strong>Status</strong>: Beta.</p>
-          <ol>
-              <li><strong>Pay what you want</strong> for 30 days access. (Only during beta)</li>
-              <li>Connect instantly using your reserved peer slot.</li>
-          </ol>
+          <section id="intro">
+            <p>Reserve a spot for your Go-Ethereum Light Client, powered by a smart contract.</p>
+            <p><strong>Status</strong>: Beta.</p>
+            <ol>
+                <li><strong>Pay what you want</strong> for 30 days access. (Only during beta)</li>
+                <li>Connect instantly using your reserved peer slot.</li>
+            </ol>
+            <p>
+              The goal of vipnode is to allow the Ethereum network to remain decentralized by creating a financial incentive for more people to run full nodes and serve native light clients.
+            </p>
+          </section>
+
           <h2 id="get-started">Get Started</h2>
           <h3 id="your-ethereum-enode-id">Your Ethereum enode ID:</h3>
 
@@ -64,6 +69,24 @@
           <p>and restart your Ethereum client.</p>
           <p>If you'd like to limit your client just to the vipnode, use the <code>--nodiscover</code>
               flag.</p>
+
+          <section id="subscribe" class="highlight">
+            <h3>Stay updated</h3>
+            <p>
+            Connection details can change. Subscribe for updates to be notified about changes in service and project updates.
+            </p>
+            <form action="https://tinyletter.com/vipnode"
+                  method="post"
+                  target="popupwindow"
+                  onsubmit="window.open('https://tinyletter.com/vipnode', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+              <p>
+                <label for="tlemail">Email address:</label>
+                <input type="text" style="width:240px" name="email" id="tlemail" placeholder="satoshin@gmx.com" />
+                <input type="hidden" value="1" name="embed" />
+                <input type="submit" value="Subscribe" />
+              </p>
+            </form>
+          </section>
       </article>
       <article>
 
@@ -87,8 +110,12 @@
               normal server limits and get to the front of the line.</p>
           <p>Modifications are going to be submitted upstream once they're sufficiently
               tested.</p>
+          <h3>How does vipnode relate to Infura?</h3>
+          <p>Infura provides centralized gateways to various services. It's great! It allows apps to connect to it without running any Ethereum infrastructure.</p>
+          <p>On the other hand, vipnode creates an incentive for more people to run valuable Ethereum infrastructure and serve more native clients in the peer-to-peer network.</p>
+          </p>
           <h3>Can I run my own vipnode? What does it cost?</h3>
-          <p>That's the goal! [Everything is open source](https://github.com/shazow/vipnode), but it's not packaged nicely yet.</p>
+          <p>That's the goal! <a href="https://github.com/shazow/vipnode">Everything is open source</a>, but it's not packaged nicely yet.</p>
           <p>Right now I'm running it on DigitalOcean for about $40/mo, which I hope will
               handle at least a few dozen light client peers.</p>
           <p>I'm collecting data on the resource requirements from this experiment which will
@@ -121,5 +148,5 @@
 
       <script src="https://cdn.jsdelivr.net/npm/vue"></script>
       <script src="js/web3.min.js"></script>
-      <script src="js/app.js?1"></script>
+      <script src="js/app.js?2"></script>
 </html>
