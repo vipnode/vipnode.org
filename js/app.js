@@ -86,10 +86,12 @@ const app = new Vue({
                 if (err) {
                     return this.error('Failed to load vipnode status.', err);
                 }
+                limit = Number(limit);
                 contract.numRegistered.call(function(err, num) {
                     if (err) {
                         return this.error('Failed to load vipnode status.', err);
                     }
+                    num = Number(num);
                     if (limit <= num) {
                         return this.warning('vipnode is full! Please email the owner and politely ask to open more slots.')
                     }
@@ -118,7 +120,6 @@ const app = new Vue({
                     return this.error('Smart contract transaction failed.', err);
                 }
                 this.pendingTx = res;
-                console.log(res);
                 this.success('👍');
             }.bind(this));
         },
