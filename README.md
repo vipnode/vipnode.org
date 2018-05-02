@@ -4,7 +4,7 @@ Connect instantly with your Ethereum Light Client to a premium VIPNode.
 
 **Status**: Beta. It's functional but the code is changing.
 
-Try it here: https://vipnode.shazow.net/
+Try it here: https://vipnode.org/
 
 
 ## How does it work?
