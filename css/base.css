@@ -1,5 +1,10 @@
 body {
     font-family: sans-serif;
+    line-height: 1.5;
+}
+p {
+    margin-top: 0.75em;
+    margin-bottom: 1.25em;
 }
 a {
     color: rgba(30, 10, 60, 0.8);
@@ -25,6 +30,7 @@ article {
 }
 
 form {
+    padding-left: 1em;
     border-left: 2px solid;
 }
 form p {
@@ -48,9 +54,6 @@ pre {
 code {
     background: rgb(240, 240, 240);
     padding: 0 2px;
-}
-#intro {
-    line-height: 1.5em;
 }
 .messages {
     font-weight: bold;
@@ -79,4 +82,6 @@ ul.messages {
 }
 .messages li, .messages p {
     padding: 5px;
+}
+ol, ul {
 }
