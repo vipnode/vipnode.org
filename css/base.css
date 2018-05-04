@@ -68,7 +68,7 @@ code {
 .success {
     background: #84ff97;
 }
-.highlight h3 {
+.highlight {
     background: rgba(255, 200, 0, 0.2);
     margin: 0 -0.5em;
     padding: 5px 0.5em;
