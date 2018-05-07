@@ -81,29 +81,48 @@ const app = new Vue({
                 return;
             }
         },
-        loadStatus(contract) {
-            contract.limitRegistered.call(function(err, limit) {
-                if (err) {
-                    return this.error('Failed to load vipnode status.', err);
+        loadStatus(contract, cb) {
+            if (web3 === undefined) {
+                return this.error("Please use a web3-enabled browser to execute this smart contract.");
+            }
+
+            web3.version.getNetwork(function(err, netId) {
+                if (netId !== "1") {
+                    return this.error("Please switch your wallet to the mainnet.");
                 }
-                limit = Number(limit);
-                contract.numRegistered.call(function(err, num) {
-                    if (err) {
-                        return this.error('Failed to load vipnode status.', err);
+
+                web3.eth.getAccounts(function(err, res) {
+                    if (res.length === 0) {
+                        return this.error("Please unlock your wallet first.");
                     }
-                    num = Number(num);
-                    if (limit <= num) {
-                        return this.warning('vipnode is full! Please email the owner and politely ask to open more slots.')
-                    }
-                    this.info('Status loaded: ' + (limit-num) + ' slots currently available.');
+
+                    contract.limitRegistered.call(function(err, limit) {
+                        if (err) {
+                            return this.error('Failed to load vipnode status.', err);
+                        }
+
+                        limit = Number(limit);
+                        contract.numRegistered.call(function(err, num) {
+                            if (err) {
+                                return this.error('Failed to load vipnode status.', err);
+                            }
+
+                            num = Number(num);
+                            if (limit <= num) {
+                                return this.warning('vipnode is full! Please email the owner and politely ask to open more slots.')
+                            }
+                            this.info('Status loaded: ' + (limit-num) + ' slots currently available.');
+
+                            // So deep.
+                            cb();
+                        }.bind(this));
+                    }.bind(this));
                 }.bind(this));
             }.bind(this));
         },
         register(enode, amount) {
             const contract = this.getContract();
             if (!contract) return;
-
-            this.loadStatus(contract);
 
             const weiAmount = web3.toWei(amount, 'ether');
             const enodeParts = enode.match(reNodeID);
@@ -112,15 +131,17 @@ const app = new Vue({
             }
             const cleanEnode = enodeParts[0];
 
-            contract.register.sendTransaction(cleanEnode, {value: weiAmount}, function(err, res) {
-                if (err) {
-                    if (err.message && err.message.indexOf('User denied transaction signature.') !== -1)  {
-                        return this.warning('Transaction aborted. Try again?')
+            this.loadStatus(contract, function() {
+                contract.register.sendTransaction(cleanEnode, {value: weiAmount}, function(err, res) {
+                    if (err) {
+                        if (err.message && err.message.indexOf('User denied transaction signature.') !== -1)  {
+                            return this.warning('Transaction aborted. Try again?')
+                        }
+                        return this.error('Smart contract transaction failed.', err);
                     }
-                    return this.error('Smart contract transaction failed.', err);
-                }
-                this.pendingTx = res;
-                this.success('👍');
+                    this.pendingTx = res;
+                    this.success('👍');
+                }.bind(this));
             }.bind(this));
         },
     },
