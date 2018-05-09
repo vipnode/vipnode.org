@@ -41,7 +41,7 @@ var watching = vipnode.allEvents(filter).watch(function(err, res) {
 
   var enode = parseEnode(reg.enode);
   try{
-    admin.trustPeer(enode);
+    admin.addTrustedPeer(enode);
     trusting[enode] = reg;
   } catch(e) {
     console.log("failed to add reg: " + JSON.stringify(reg));
@@ -61,6 +61,7 @@ function checkExpired() {
     }
     delete trusting[enode];
     try {
+      admin.removeTrustedPeer(enode);
       admin.removePeer(enode);
     } catch(e) {
       console.log("failed to remove reg: " + JSON.stringify(reg));
@@ -75,3 +76,19 @@ function checkExpired() {
 // Check twice per day
 var checkSpeed = 1000*60*60*12;
 var interval = setInterval(checkExpired, checkSpeed);
+
+function status(table) {
+  var trusted=0, les=0, count=0;
+  admin.peers.forEach(function(value){
+    count++;
+    if (value.network.trusted) trusted++;
+    if (value.protocols.les) les++;
+    if (table) {
+      console.log(value.network.remoteAddress+"\t"+value.network.trusted+"\t"+(value.protocols.les&&"les"||"")+"\t"+value.name);
+    }
+  });
+  console.log(new Date(), ' > ', count, ' peers connected;\t', les, ' light clients;\t', trusted, ' trusted.');
+}
+var statusInterval = setInterval(status, 1000*60*60); // Once per hour
+
+console.log("Ready");
