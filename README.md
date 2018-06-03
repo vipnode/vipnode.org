@@ -2,12 +2,13 @@
 
 Connect instantly with your Ethereum Light Client to a premium VIPNode.
 
-**Status**: Beta. It's functional but the code is changing.
+**Status**: v1 is ready and live at https://vipnode.org/, work started on v2 thanks to an Ethereum Foundation grant.
 
-Try it here: https://vipnode.org/
+More details in this blog post: [An economic incentive for running Ethereum Full Nodes](https://medium.com/@shazow/an-economic-incentive-for-running-ethereum-full-nodes-ecc0c9ebe22)
 
+## vipnode v1: Solo Node
 
-## How does it work?
+### How does it work?
 
 On the front-end, there's a smart contract,
 [contracts/vipnode.sol](https://github.com/shazow/vipnode/blob/master/contracts/vipnode.sol).
@@ -18,41 +19,27 @@ expiration time is.
 There is a DApp which allows people to register.
 
 On the back-end, it's running a modified version of go-ethereum, the [patchset is
-here](https://github.com/shazow/go-ethereum/pull/2). I plan to submit these
-changes upstream once vipnode's requirements are fleshed out.
+here](https://github.com/ethereum/go-ethereum/pull/16333).
 
 The geth-vipnode is driven by some JavaScript which loads the smart contract and
 monitors events of new registered members, see 
 [run.js](https://github.com/shazow/vipnode/blob/master/run.js).
 
+## vipnode v2: Node Pools
 
-## How do I run my own?
+A vipnode pool that third-party full-nodes can join and get proportional payout based on the light nodes they serve.
 
-Right now, the code is changing so it's not packaged up nicely for other people.
-If you're technical enough, you can try reproducing it from the "How does it
-work?" overview above.
+### How does it work?
 
-
-## Roadmap
-
-Smart-contract powered full node that whitelists registered members so that
-their light clients can connect instantly.
-
-- [x] Smart contract for people to join the vipnode.
-- [x] User-friendly DApp frontend for the smart contract ([vipnode.shazow.net](https://vipnode.shazow.net/))
-- [x] Fix go-ethereum not respecting trusted node set for light clients. ([PR #16189](https://github.com/ethereum/go-ethereum/pull/16189))
-- [x] Modified geth capable of dynamically adjusting trusted nodes set. ([Progress PR, not submitted yet](https://github.com/shazow/go-ethereum/pull/2))
-- [x] geth console javascript (otto-friendly) driver for monitoring smart
-      contract and adjusting trusted slots.
-- [x] DApp "node is full" message.
-- [ ] DApp should announce how many slots are available, maybe provide vipnode live stats in general.
-- [ ] Package it up so other people can run their own vipnode.
-
-
-### Future ideas
-
-- **vipnode off-chain**: For the current featureset, the smart contract is not very necessary. Could do the subscription app off-chain, but still accept ETH for payments (or even Stripe or whatever). Ideally this would be a standalone Go binary that you run next to your full node.
-- **vipnode pool**: A single vipnode pool (vippool?) that many full-node hosts can join and get proportional payout for how many light nodes they serve (and for how long). This is tricky to make a good user experience without requiring people to run custom clients. The current thought is to make a vipnode bootstrap server to load balance across many vipnodes, and a custom ethstats server that clients can use to track how much time each client spends on which vipnode to figure out appropriate payouts.
+- vipnode-host frontend: Registration process to join the vipnode pool.
+- vipnode-client frontend: Registration process (can be a smart contract, or anything else) to associate a light client's enodeID with the account.
+- vipnode-pool will act as a bootstrapping server, routing connecting vipnode light clients to the next available vipnode full node.
+- vipnode-pool will keep track of which light client is connected to which full node, and other usage-related analytics.
+- vipnode-pool will keep track of full node availability and capacity, in order to avoid routing light clients if the full node is full or down.
+- vipnode-host will run on fulll nodes which will interface with the geth or parity RPC and keep track of which enodeIDs need to be whitelisted, and which ones are connected and for how long (from the host's perspective).
+- vipnode-client will implement an vipnode-pool API to:
+  1. Register the current enodeID (if not already registered)
+  2. Send back the set of connected peers (to allow time-usage billing), from the client's perspective.
 
 
 ## License
