@@ -1,0 +1,24 @@
+{
+  "name": "vipnode.org",
+  "version": "1.0.0",
+  "description": "Economic incentive for running Ethereum full nodes.",
+  "dependencies": {
+    "node-sass": "^4.9.0",
+    "nuxt": "^1.4.0",
+    "sass-loader": "^7.0.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vipnode/vipnode.org.git"
+  },
+  "author": "Andrey Petrov",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vipnode/vipnode.org/issues"
+  },
+  "homepage": "https://github.com/vipnode/vipnode.org#readme"
+}
