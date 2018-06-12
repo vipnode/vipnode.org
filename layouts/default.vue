@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container">
     <h1 id="vipnode">👑  <a href="/">vipnode</a> 👑</h1>
 
     <nuxt/>
