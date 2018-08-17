@@ -1,51 +1,25 @@
+@import 'normalize';
+@import 'skeleton';
+
 body {
-    font-family: sans-serif;
-    line-height: 1.5;
+  background-color: #0C2643;
+  color: rgba(255,255,255,.85);
+  font-family: 'PT Sans', sans-serif;
 }
-p {
-    margin-top: 0.75em;
-    margin-bottom: 1.25em;
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'PT Mono', monospace;
+}
+/* PREVIOUS STYLES */
+/*
+body {
+    //color: #333;
 }
 a {
-    color: rgba(30, 10, 60, 0.8);
-}
-h1 a {
-    text-decoration: none;
-}
-h1 {
-    margin: 1rem 0;
-}
-h2 {
-    margin-top: 2em;
-    padding-bottom: 2px;
-    color: #4a90e2;
+    //color: rgba(30, 10, 60, 0.8);
 }
 iframe {
     width: 100%;
-}
-article, .container {
-    max-width: 800px;
-    margin: 0 auto;
-    color: #333;
-}
-
-form {
-    padding-left: 1em;
-    border-left: 2px solid;
-}
-form p {
-    margin-left: 1.5em;
-}
-input {
-    padding: 2px 5px;
-}
-input[name="amount"] {
-    width: 5em;
-    text-align: center;
-}
-small {
-    margin-left: 0.5em;
-    color: #666;
 }
 pre {
     overflow-x: scroll;
@@ -73,8 +47,6 @@ code {
 }
 .highlight {
     background: rgba(255, 200, 0, 0.2);
-    margin: 0 -0.5em;
-    padding: 5px 0.5em;
 }
 ul.messages {
     list-style: none;
@@ -82,6 +54,4 @@ ul.messages {
 }
 .messages li, .messages p {
     padding: 5px;
-}
-ol, ul {
-}
+}*/

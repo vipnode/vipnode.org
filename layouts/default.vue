@@ -23,6 +23,58 @@
 
 
     <nuxt/>
+
+    <div id="footer">
+      <nav>
+        <ul>
+          <li>
+            <a href="">Reserve Your vipnode</a>
+          </li>
+          <li>
+            <a href="https://github.com/vipnode/vipnode.org">Source code</a>
+          </li>
+          <li>
+            <a href="">Docs + support</a>
+          </li>
+          <li>
+            <nuxt-link to="/status">Status</nuxt-link>
+          </li>
+          <li>
+            <nuxt-link to="/#newsletter">Get updates</nuxt-link>
+          </li>
+          <li>
+            <a href="">About</a>
+          </li>
+          <li>
+            <a href="">Blog</a>
+          </li>
+          <li>
+            <nuxt-link to="/faw">FAQ</nuxt-link>
+          </li>
+          <li>
+            <a href="">Press</a>
+          </li>
+
+          <div class="footer-newsletter">
+            <p>
+              Get notifications of features or breaking changes
+            </p>
+            <form action="https://tinyletter.com/vipnode"
+                  method="post"
+                  target="popupwindow"
+                  onsubmit="window.open('https://tinyletter.com/vipnode', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+              <p>
+                <input type="text" style="width:240px" name="email" id="tlemail" placeholder="satoshin@gmx.com" />
+                <input type="hidden" value="1" name="embed" />
+                <input type="submit" value="Subscribe" />
+              </p>
+            </form>
+          </div>
+
+          <p>Made with 🍁 in Toronto, Canada</p>
+        </ul>
+      </nav>
+    </div>
   </div>
 </template>
 

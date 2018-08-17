@@ -1,33 +1,33 @@
 <template>
   <article>
-    <div>
-      <section id="intro">
+    <div class="row">
+      <section id="intro" class="six columns">
         <h2>vipnode is an <span class="hl1">economic incentive</span> for running <span class="hl2">Ethereum full nodes</span>.</h2>
         <p>The goal is to allow the Ethereum network to remain decentralized by creating a financial marketplace for more people to run full nodes and serve native light clients.</p>
         <p><a href="https://medium.com/@shazow/an-economic-incentive-for-running-ethereum-full-nodes-ecc0c9ebe22" class="btn btn-primary">Read the full story on Medium</a></p>
       </section>
 
-      <section id="get-started">
+      <section id="get-started" class="six columns">
         <no-ssr>
           <Contract />
         </no-ssr>
       </section>
     </div>
 
-    <section id="features">
-      <div>
+    <section id="features" class="row">
+      <div class="three columns">
         <h3>There aren’t enough nodes available.</h3>
         <p>The goal is to allow the Ethereum network to remain decentralized by creating a financial marketplace for more people to run full nodes and serve native light clients.</p>
       </div>
-      <div>
+      <div class="three columns">
         <h3>We need more full nodes with light nodes slots.</h3>
         <p>The goal is to allow the Ethereum network to remain decentralized by creating a financial marketplace for more people to run full nodes and serve native light clients.</p>
       </div>
-      <div>
+      <div class="three columns">
         <h3>vipnode creates an economic incentive to run a full node.</h3>
         <p>The goal is to allow the Ethereum network to remain decentralized by creating a financial marketplace for more people to run full nodes and serve native light clients.</p>
       </div>
-      <div>
+      <div class="three columns">
         <h3>Paying for vip access means a node will always be available.</h3>
         <p>The goal is to allow the Ethereum network to remain decentralized by creating a financial marketplace for more people to run full nodes and serve native light clients.</p>
       </div>
