@@ -26,17 +26,16 @@ a { color: $link-color; text-decoration: none; }
 .hl1 { color: $highlight; }
 .hl2 { color: $ethereum-blue; }
 
-.button.button-primary {
-  background-color: $ethereum-blue;
-  border-color: $ethereum-blue;
-}
-
-.button {
+.button, input[type="submit"] {
   background-color: lighten($background, 3%);
   border-color: lighten($background, 3%);
   color: #50c3d0;
 }
-// TODO: Switch the above to rgba?
+
+.button.button-primary, input[type="submit"].button-primary {
+  background-color: $ethereum-blue;
+  border-color: $ethereum-blue;
+}
 
 /* EXTRAS */
 .all-caps {
@@ -151,7 +150,7 @@ a { color: $link-color; text-decoration: none; }
 
 #status {
   width: 70%;
-  margin: 5em auto 5em auto;
+  margin: 5em auto;
   ul {
     margin-bottom: 3px;
     li {
@@ -197,6 +196,27 @@ a { color: $link-color; text-decoration: none; }
       margin-bottom: 0.5em;
     }
     a { border-bottom: 1px solid darken($link-color, 20%); }
+  }
+}
+
+#newsletter {
+  width: 63%;
+  margin: 5em auto;
+  h2 {
+    font-size: 2.6rem;
+  }
+  form {
+    display: grid;
+    grid-template-columns: 1fr 200px;
+    grid-gap: 1em;
+    margin-bottom: 0;
+    p { margin-bottom: 0; }
+  }
+  p small {
+    color: rgba(255,255,255,0.5);
+    font-size: 1.4rem;
+    position: relative;
+    top: -10px;
   }
 }
 
