@@ -37,6 +37,12 @@ a { color: $link-color; text-decoration: none; }
   border-color: $ethereum-blue;
 }
 
+.button-small {
+  height: 30px;
+  line-height: 30px;
+  padding: 0 15px;
+}
+
 /* EXTRAS */
 .all-caps {
   text-transform: uppercase;
@@ -93,6 +99,47 @@ a { color: $link-color; text-decoration: none; }
       }
       a.button {
         font-size: 1.5rem;
+      }
+    }
+  }
+}
+
+/* FOOTER */
+#footer {
+  border-top: 1px solid rgba(255,255,255,0.2);
+  padding-top: 2em;
+  margin-top: 3em;
+  nav ul {
+    list-style: none;
+    column-count: 2;
+    li {
+      font-size: 1.6rem;
+      margin-bottom: 0.5rem;
+    }
+    a.button {
+      margin-left: -15px;
+      margin-bottom: 5px;
+    }
+  }
+  .footer-newsletter {
+    text-align: right;
+    p {
+      font-size: 1.6rem;
+      margin-bottom: 10px;
+    }
+    form {
+      font-size: 1.4rem;
+      input {
+        height: 32px;
+        line-height: 32px;
+      }
+      input[type="text"] {
+        width: 250px;
+      }
+      input[type="submit"] {
+        padding-left: 15px;
+        padding-right: 15px;
+        margin-left: 10px;
       }
     }
   }

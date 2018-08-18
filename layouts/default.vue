@@ -31,10 +31,10 @@
     <nuxt/>
 
     <div id="footer">
-      <nav>
-        <ul>
+      <nav class="row">
+        <ul class="six columns">
           <li>
-            <a href="">Reserve Your vipnode</a>
+            <a href="" class="button button-primary button-small">Reserve Your vipnode</a>
           </li>
           <li>
             <a href="https://github.com/vipnode/vipnode.org">Source code</a>
@@ -60,25 +60,22 @@
           <li>
             <a href="">Press</a>
           </li>
-
-          <div class="footer-newsletter">
-            <p>
-              Get notifications of features or breaking changes
-            </p>
-            <form action="https://tinyletter.com/vipnode"
-                  method="post"
-                  target="popupwindow"
-                  onsubmit="window.open('https://tinyletter.com/vipnode', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
-              <p>
-                <input type="text" style="width:240px" name="email" id="tlemail" placeholder="satoshin@gmx.com" />
-                <input type="hidden" value="1" name="embed" />
-                <input type="submit" value="Subscribe" />
-              </p>
-            </form>
-          </div>
-
-          <p>Made with 🍁 in Toronto, Canada</p>
         </ul>
+
+        <div class="footer-newsletter six columns">
+          <p>
+            Get notifications of features or breaking changes
+          </p>
+          <form action="https://tinyletter.com/vipnode"
+                method="post"
+                target="popupwindow"
+                onsubmit="window.open('https://tinyletter.com/vipnode', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+            <input type="text" name="email" id="tlemail" placeholder="satoshin@gmx.com" />
+            <input type="hidden" value="1" name="embed" />
+            <input type="submit" value="Subscribe" class="button-primary" />
+          </form>
+          <p>Made with 🍁 in Toronto, Canada</p>
+        </div>
       </nav>
     </div>
   </div>
