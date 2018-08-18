@@ -220,6 +220,13 @@ a { color: $link-color; text-decoration: none; }
   }
 }
 
+#sponsors {
+  h2 {
+    margin-bottom: 1.5em;
+  }
+  img { max-width: 100%; }
+}
+
 /* PREVIOUS STYLES */
 /*
 body {

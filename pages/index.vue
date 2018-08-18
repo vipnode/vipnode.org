@@ -78,6 +78,32 @@
       </form>
       <p><small>I promise no spam, just updates on progress.</small></p>
     </section>
+
+    <section id="sponsors" class="text-center">
+      <h2>Sponsors</h2>
+      <div class="row">
+        <div class="three columns">
+          <a href="https://www.ethereum.org/foundation">
+            <img src="~/static/img/ethereum.png" alt="Ethereum Foundation" />
+          </a>
+        </div>
+        <div class="three columns">
+          <a href="https://infura.io/">
+            <img src="~/static/img/infura.png" alt="Infura" />
+          </a>
+        </div>
+        <div class="three columns">
+          <a href="">
+            <img src="~/static/img/you.png" alt="You?" />
+          </a>
+        </div>
+        <div class="three columns">
+          <a href="">
+            <img src="~/static/img/you.png" alt="You?" />
+          </a>
+        </div>
+      </div>
+    </section>
   </article>
 </template>
 
