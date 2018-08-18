@@ -69,6 +69,24 @@ a { color: $link-color; text-decoration: none; }
   text-align: center;
 }
 
+@media (max-width: 1024px) {
+  .hidden-lg-down {
+    display: none;
+  }
+}
+
+@media (max-width: 960px) {
+  .hidden-md-down {
+    display: none;
+  }
+}
+
+@media (max-width: 400px) {
+  .hidden-sm-down {
+    display: none;
+  }
+}
+
 /* HEADER */
 .nav {
   margin-top: 1em;
@@ -337,6 +355,11 @@ a { color: $link-color; text-decoration: none; }
     margin-bottom: 1.5em;
   }
   img { max-width: 100%; }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat( auto-fit, minmax(250px, 1fr) );
+    grid-gap: 20px;
+  }
 }
 
 /* PREVIOUS STYLES */
