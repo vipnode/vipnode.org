@@ -15,19 +15,19 @@
     </div>
 
     <section id="features" class="row">
-      <div class="three columns">
+      <div class="three columns box">
         <h3>There aren’t enough nodes available.</h3>
         <p>The goal is to allow the Ethereum network to remain decentralized by creating a financial marketplace for more people to run full nodes and serve native light clients.</p>
       </div>
-      <div class="three columns">
+      <div class="three columns box">
         <h3>We need more full nodes with light nodes slots.</h3>
         <p>The goal is to allow the Ethereum network to remain decentralized by creating a financial marketplace for more people to run full nodes and serve native light clients.</p>
       </div>
-      <div class="three columns">
+      <div class="three columns box">
         <h3>vipnode creates an economic incentive to run a full node.</h3>
         <p>The goal is to allow the Ethereum network to remain decentralized by creating a financial marketplace for more people to run full nodes and serve native light clients.</p>
       </div>
-      <div class="three columns">
+      <div class="three columns box">
         <h3>Paying for vip access means a node will always be available.</h3>
         <p>The goal is to allow the Ethereum network to remain decentralized by creating a financial marketplace for more people to run full nodes and serve native light clients.</p>
       </div>

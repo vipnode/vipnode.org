@@ -13,9 +13,8 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'PT Mono', monospace;
-}
+h1, h2 { font-family: 'PT Mono', monospace; }
+h3, h4, h5, h6 { font-family: 'PT Sans', sans-serif; }
 
 a {
   text-decoration: none;
@@ -112,6 +111,17 @@ a {
 
 #get-started {
   color: #333;
+}
+
+#features {
+  margin: 3em 0;
+  .box {
+    background-color: rgba(255,255,255,.05);
+    padding: 1em;
+    p {
+      font-size: 1.6rem;
+    }
+  }
 }
 
 /* PREVIOUS STYLES */
