@@ -38,16 +38,20 @@
     </section>
 
     <section id="status">
+      <h2 class="text-center">Status + Progress</h2>
       <ul>
         <li>
+          <div class="icon check"></div>
           <h4>V1: MVP</h4>
           <p>vipnode was accepted for an Ethereum Foundation grant. Work on v2 is starting soon</p>
         </li>
         <li>
+          <div class="icon hourglass"></div>
           <h4>V2: MVP and Design</h4>
           <p>vipnode was accepted for an Ethereum Foundation grant. Work on v2 is starting soon</p>
         </li>
         <li class="current">
+          <div class="icon hourglass"></div>
           <h4>In Progress</h4>
           <p>vipnode was accepted for an Ethereum Foundation grant. Work on v2 is starting soon</p>
         </li>
