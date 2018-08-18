@@ -204,14 +204,14 @@ a { color: $link-color; text-decoration: none; }
 }
 
 #features {
-  margin: 7em 0 5em 0;
-  display: grid;
-  // There Andrey, I did CSS Grid :P
-  grid-template-columns: 23.5% 23.5% 23.5% 23.5%;
+  margin: 6em 0 5em 0;
+  display: grid; // There Andrey, I did CSS Grid :P
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   grid-gap: 1em;
   .box {
     background-color: rgba(255,255,255,.05);
     padding: 0 20px 20px 20px;
+    margin-top: 1em;
     .sq {
       width: 50px;
       height: 50px;
@@ -285,6 +285,14 @@ a { color: $link-color; text-decoration: none; }
   }
 }
 
+@media (max-width: 1000px) {
+  #status { width: 85%; }
+}
+
+@media (max-width: 800px) {
+  #status { width: 100%; }
+}
+
 #newsletter {
   width: 63%;
   margin: 5em auto;
@@ -304,6 +312,24 @@ a { color: $link-color; text-decoration: none; }
     position: relative;
     top: -10px;
   }
+}
+
+@media (max-width: 800px) {
+  #newsletter {
+    form {
+      grid-template-columns: repeat( auto-fit, minmax(250px, 1fr) );
+      input { margin-bottom: 0; }
+    }
+    p small { top: 0; }
+  }
+}
+
+@media (max-width: 1000px) {
+  #newsletter { width: 85%; }
+}
+
+@media (max-width: 800px) {
+  #newsletter { width: 100%; }
 }
 
 #sponsors {
