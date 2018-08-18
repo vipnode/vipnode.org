@@ -3,10 +3,10 @@
 
 $highlight:      #FEDF79 !default;
 $ethereum-blue:  #4A90E2 !default;
-
+$background:     #0C2643 !default;
 
 body {
-  background-color: #0C2643;
+  background-color: $background;
   color: rgba(255,255,255,.85);
   font-family: 'PT Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -21,7 +21,6 @@ a {
   text-decoration: none;
 }
 
-
 .hl1, .hl2 { font-weight: bold; }
 .hl1 { color: $highlight; }
 .hl2 { color: $ethereum-blue; }
@@ -31,11 +30,25 @@ a {
   border-color: $ethereum-blue;
 }
 
+.button {
+  background-color: lighten($background, 3%);
+  border-color: lighten($background, 3%);
+  color: #50c3d0;
+}
+// TODO: Switch the above to rgba?
+
 /* EXTRAS */
 .all-caps {
   text-transform: uppercase;
   letter-spacing: 0.1em;
 }
+
+.full-width {
+  margin-left: -12.5%;
+  margin-right: -12.5%;
+}
+
+// XXX: Going to need media queries here
 
 /* HEADER */
 .nav {
@@ -89,6 +102,18 @@ a {
     font-size: 3rem;
   }
 }
+
+.index-form {
+  background: url('~/static/img/form-bg.png') top center repeat-y;
+  padding-left: 12.5%;
+  padding-right: 12.5%;
+}
+// XXX: Going to need media queries here
+
+#get-started {
+  color: #333;
+}
+
 /* PREVIOUS STYLES */
 /*
 body {

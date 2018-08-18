@@ -1,10 +1,10 @@
 <template>
   <article>
-    <div class="row">
+    <div class="row full-width index-form">
       <section id="intro" class="six columns">
         <h2>vipnode is an <span class="hl1">economic incentive</span> for running <span class="hl2">Ethereum full nodes</span>.</h2>
         <p>The goal is to allow the Ethereum network to remain decentralized by creating a financial marketplace for more people to run full nodes and serve native light clients.</p>
-        <p><a href="https://medium.com/@shazow/an-economic-incentive-for-running-ethereum-full-nodes-ecc0c9ebe22" class="btn btn-primary">Read the full story on Medium</a></p>
+        <p><a href="https://medium.com/@shazow/an-economic-incentive-for-running-ethereum-full-nodes-ecc0c9ebe22" class="button">Read the full story on Medium</a></p>
       </section>
 
       <section id="get-started" class="six columns">
