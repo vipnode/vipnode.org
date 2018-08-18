@@ -114,12 +114,32 @@ a {
 }
 
 #features {
-  margin: 3em 0;
+  margin: 7em 0 3em 0;
+  display: grid;
+  // There Andrey, I did CSS Grid :P
+  grid-template-columns: 23.5% 23.5% 23.5% 23.5%;
+  grid-gap: 1em;
   .box {
     background-color: rgba(255,255,255,.05);
-    padding: 1em;
+    padding: 0 20px 20px 20px;
+    .sq {
+      width: 50px;
+      height: 50px;
+      margin: 0 auto -10px auto;
+      background-color: $ethereum-blue;
+      position: relative;
+      top: -26px;
+    }
+    .sq.teal { background-color: #2B97A3; }
+    .sq.orange { background-color: #E75326; }
+    .sq.yellow { background-color: #E4D785; }
+    h3 {
+      font-size: 2.5rem;
+      margin-bottom: 0.2em;
+    }
     p {
       font-size: 1.6rem;
+      line-height: 1.8;
     }
   }
 }
