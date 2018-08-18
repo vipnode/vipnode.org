@@ -1,9 +1,15 @@
 <template>
   <div class="container">
-    <div class="nav">
-      <h1 id="vipnode"><a href="/">vipnode</a></h1>
-      <h2>Reserve a spot for your Go-Ethereum Light Client, powered by a smart contract.</h2>
-      <nav>
+    <div class="nav row">
+      <div class="five columns" id="logo-container">
+        <h1 id="vipnode">
+          <a href="/">
+            <img src="~/static/img/vipnode.png" alt="vipnode" id="vipnode-logo"/>
+          </a>
+        </h1>
+        <h2>Reserve a spot for your Go-Ethereum Light Client, powered by a smart contract.</h2>
+      </div>
+      <nav class="seven columns">
         <ul>
           <li>
             <nuxt-link to="/faq">FAQ</nuxt-link>
@@ -15,7 +21,7 @@
             <a href="https://medium.com/@shazow/an-economic-incentive-for-running-ethereum-full-nodes-ecc0c9ebe22">Blog</a>
           </li>
           <li>
-            <nuxt-link to="/">Reserve</nuxt-link>
+            <nuxt-link to="/" class="button-primary button">Reserve</nuxt-link>
           </li>
         </ul>
       </nav>

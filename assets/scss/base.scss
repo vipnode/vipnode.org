@@ -1,14 +1,93 @@
 @import 'normalize';
 @import 'skeleton';
 
+$highlight:      #FEDF79 !default;
+$ethereum-blue:  #4A90E2 !default;
+
+
 body {
   background-color: #0C2643;
   color: rgba(255,255,255,.85);
   font-family: 'PT Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: 'PT Mono', monospace;
+}
+
+a {
+  text-decoration: none;
+}
+
+
+.hl1, .hl2 { font-weight: bold; }
+.hl1 { color: $highlight; }
+.hl2 { color: $ethereum-blue; }
+
+.button.button-primary {
+  background-color: $ethereum-blue;
+  border-color: $ethereum-blue;
+}
+
+/* EXTRAS */
+.all-caps {
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* HEADER */
+.nav {
+  margin-top: 1em;
+  #logo-container {
+    position: relative;
+    left: -31px;
+  }
+  h1 {
+    margin-bottom: 0;
+    #vipnode-logo {
+      max-width: 150px;
+    }
+  }
+  h2 {
+    font-size: 1.3rem;
+    line-height: 1.5;
+    letter-spacing: 0.1em;
+    position: relative;
+    top: -12px;
+    left: 34px;
+    max-width: 380px;
+    font-family: 'PT Sans', sans-serif;
+    color: rgba(255,255,255,.70);
+  }
+  ul {
+    list-style: none;
+    text-align: right;
+    margin-top: 2.5em;
+    li {
+      display: inline-block;
+      font-weight: bold;
+      padding: 0 2em;
+      margin-left: 1em;
+      font-size: 1.6rem;
+      a {
+        @extend .all-caps;
+        color: #fff;
+      }
+      a.button {
+        font-size: 1.5rem;
+      }
+    }
+  }
+}
+
+/* INDEX */
+#intro {
+  margin: 3em 0;
+  h2 {
+    font-size: 3rem;
+  }
 }
 /* PREVIOUS STYLES */
 /*
