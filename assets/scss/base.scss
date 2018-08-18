@@ -29,12 +29,21 @@ a { color: $link-color; text-decoration: none; }
 .button, input[type="submit"] {
   background-color: lighten($background, 3%);
   border-color: lighten($background, 3%);
-  color: #50c3d0;
+  color: $link-color;
+  &:hover {
+    background-color: lighten($background, 10%);
+    border-color: lighten($background, 10%);
+    color: lighten($link-color, 10%);
+  }
 }
 
 .button.button-primary, input[type="submit"].button-primary {
   background-color: $ethereum-blue;
   border-color: $ethereum-blue;
+  &:hover {
+    background-color: darken($ethereum-blue, 10%);
+    border-color: darken($ethereum-blue, 10%);
+  }
 }
 
 .button-small {
@@ -109,6 +118,7 @@ a { color: $link-color; text-decoration: none; }
   border-top: 1px solid rgba(255,255,255,0.2);
   padding-top: 2em;
   margin-top: 3em;
+  margin-bottom: 1em;
   nav ul {
     list-style: none;
     column-count: 2;
