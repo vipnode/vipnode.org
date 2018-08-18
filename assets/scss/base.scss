@@ -1,13 +1,14 @@
 @import 'normalize';
 @import 'skeleton';
 
-$highlight:      #FEDF79 !default;
-$ethereum-blue:  #4A90E2 !default;
-$background:     #0C2643 !default;
-$link-color:     #79E4F0 !default;
+$highlight:        #FEDF79 !default;
+$ethereum-blue:    #4A90E2 !default;
+$background:       #0C2643 !default;
+$link-color:       #79E4F0 !default;
+$link-color-dark:  #2B97A3 !default;
 
-$monospace:      'PT Mono', monospace;
-$sans-serif:     'PT Sans', sans-serif;
+$monospace:        'PT Mono', monospace;
+$sans-serif:       'PT Sans', sans-serif;
 
 body {
   background-color: $background;
@@ -99,12 +100,15 @@ a { color: $link-color; text-decoration: none; }
     li {
       display: inline-block;
       font-weight: bold;
-      padding: 0 2em;
+      padding: 0 0 0 3em;
       margin-left: 1em;
       font-size: 1.6rem;
       a {
         @extend .all-caps;
         color: #fff;
+        &:hover {
+          color: $link-color;
+        }
       }
       a.button {
         font-size: 1.5rem;
@@ -160,18 +164,43 @@ a { color: $link-color; text-decoration: none; }
   background: url('~/static/img/form-bg.png') top center repeat-y;
   padding-left: 12.5%;
   padding-right: 12.5%;
+  margin-top: 1.5em;
 }
 // XXX: Going to need media queries here
 
 #intro {
-  margin: 3em 0;
   h2 {
     font-size: 3rem;
+    margin-top: 1.5em;
   }
 }
 
 #get-started {
-  color: #333;
+  color: #0C2643;
+  form {
+    padding: 2.5em 0 0.5em 2em;
+    font-size: 1.8rem;
+    h2 {
+      color: $ethereum-blue;
+      font-size: 2.5rem;
+    }
+    label {
+      margin-top: 0.5em;
+    }
+    input[type="text"] {
+      font-size: 1.4rem;
+    }
+    input.enode { width: 100%; }
+    input.amount { width: 100px; }
+    span { color: #999; }
+    input[type="submit"] {
+      font-size: 1.6rem;
+      height: 42px;
+      margin-bottom: 0;
+      margin-top: 15px;
+    }
+    a { color: $link-color-dark; }
+  }
 }
 
 #features {

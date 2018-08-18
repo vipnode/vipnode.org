@@ -227,7 +227,7 @@ select {
   height: 38px;
   padding: 6px 10px; /* The 6px vertically centers text on FF, ignored by Webkit */
   background-color: #fff;
-  border: 1px solid #D1D1D1;
+  border: 1px solid #4A90E2;
   border-radius: 4px;
   box-shadow: none;
   box-sizing: border-box; }
@@ -261,8 +261,7 @@ select:focus {
 label,
 legend {
   display: block;
-  margin-bottom: .5rem;
-  font-weight: 600; }
+  margin-bottom: .5rem; }
 fieldset {
   padding: 0;
   border-width: 0; }

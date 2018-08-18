@@ -1,22 +1,15 @@
 <template>
   <form v-on:submit='submit' v-on:submit.prevent>
+    <h2>Become a VIP on vipnode</h2>
     <ul class="messages" v-if="messages.length > 0">
       <li v-for="msg in messages" :class="msg.kind">{{msg.body}}</li>
     </ul>
-    <ol>
-      <li>
-        <p>What is your enode? <input type="text" v-model="enode" placeholder="enode://..." /></p>
-      </li>
-      <li>
-        <p>What would you like to pay for 30 days? <input type="text" v-model="amount" value="0.2" placeholder="0.2" /> in ETH</p>
-      </li>
-      <li>
-        <p><input type="submit" value="Execute Smart Contract" :disabled="loading" /> <small>(requires <a href="https://metamask.io/" target="_blank">a web3-enabled browser</a>)</small></p>
-      </li>
-      <li>
-        <p><a href="#subscribe">Subscribe to updates</a></p>
-      </li>
-    </ol>
+    <label for="enode">What is your enode id?</label>
+    <input type="text" v-model="enode" placeholder="enode://..." name="enode" class="enode"/>
+    <label for="amount">What would you like to pay for 30 days?</label>
+    <input type="text" v-model="amount" value="0.2" placeholder="0.2" name="amount" class="amount"/><span> in ETH</span><br/>
+    <input type="submit" value="Execute Smart Contract" :disabled="loading" class="button-primary"/>
+    <p><small>(requires <a href="https://metamask.io/" target="_blank">a web3-enabled browser</a>)</small></p>
     <div class="messages" v-if="pendingTx">
       <p class="success">
         Transaction submitted. It can take a few minutes. <a :href="'https://etherscan.io/tx/' + pendingTx" target="_blank">Watch it here.</a>
