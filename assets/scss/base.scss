@@ -21,7 +21,11 @@ body {
 h1, h2 { font-family: $monospace; }
 h3, h4, h5, h6 { font-family: $sans-serif; }
 
-a { color: $link-color; text-decoration: none; }
+a {
+  color: $link-color;
+  text-decoration: none;
+  transition: 0.3s;
+}
 
 .hl1, .hl2 { font-weight: bold; }
 .hl1 { color: $highlight; }
@@ -31,6 +35,7 @@ a { color: $link-color; text-decoration: none; }
   background-color: lighten($background, 3%);
   border-color: lighten($background, 3%);
   color: $link-color;
+  transition: 0.2s;
   &:hover {
     background-color: lighten($background, 10%);
     border-color: lighten($background, 10%);
@@ -409,7 +414,13 @@ a { color: $link-color; text-decoration: none; }
     p {
       margin-bottom: 0.5em;
     }
-    a { border-bottom: 1px solid darken($link-color, 20%); }
+    a {
+      border-bottom: 1px solid $link-color;
+      &:hover {
+        color: #fff;
+        border-bottom: 1px solid rgba(255,255,255,0.5);
+      }
+    }
   }
 }
 
