@@ -73,6 +73,26 @@ a {
   text-align: center;
 }
 
+.tooltip {
+  //width: 400px;
+  background-color: #fff;
+  border: 1px solid $highlight;
+  border-radius: 5px;
+  padding: 20px;
+  position: absolute;
+  box-shadow: 0 0 30px rgba(0,0,0,0.1);
+  p {
+    font-size: 1.4rem;
+  }
+  code {
+    font-size: 1.1rem;
+    color: #444;
+    background-color: transparent;
+    padding: 0;
+    border: 0;
+  }
+}
+
 @media (max-width: 1024px) {
   .hidden-lg-down {
     display: none !important;
@@ -303,7 +323,7 @@ a {
       margin-bottom: 0;
       margin-top: 15px;
     }
-    a { color: $link-color-dark; }
+    small a { color: $link-color-dark; }
   }
 }
 
