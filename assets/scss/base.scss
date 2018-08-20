@@ -75,6 +75,11 @@ a {
 
 .tooltip-container {
   position: relative;
+  background: url(~/static/img/tooltip.png) top left no-repeat;
+  width: 15px;
+  height: 15px;
+  display: inline-block;
+  background-size: cover;
 }
 
 .tooltip {
@@ -83,10 +88,10 @@ a {
   border: 1px solid $highlight;
   border-radius: 5px;
   padding: 20px;
-  position: absolute;
   box-shadow: 0 0 30px rgba(0,0,0,0.1);
   position: absolute;
-  bottom: 35px;
+  bottom: 38px;
+  left: -181px;
   p {
     font-size: 1.4rem;
     margin-bottom: 1rem;
