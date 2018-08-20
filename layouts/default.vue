@@ -11,6 +11,9 @@
       </div>
       <nav class="seven columns">
         <ul>
+          <li class="hidden-md-up">
+            <nuxt-link to="/" class="button-primary button">Reserve</nuxt-link>
+          </li>
           <li>
             <nuxt-link to="/faq">FAQ</nuxt-link>
           </li>
@@ -20,7 +23,7 @@
           <li>
             <a href="https://medium.com/@shazow/an-economic-incentive-for-running-ethereum-full-nodes-ecc0c9ebe22">Blog</a>
           </li>
-          <li>
+          <li class="hidden-md-down">
             <nuxt-link to="/" class="button-primary button">Reserve</nuxt-link>
           </li>
         </ul>
