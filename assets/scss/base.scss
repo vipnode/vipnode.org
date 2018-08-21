@@ -280,7 +280,7 @@ code, pre { font-family: $monospace; }
 
 /* CONTENT */
 .container article {
-  margin-top: 1.5em;
+  margin-top: 3em;
 }
 
 /* FOOTER */
@@ -345,7 +345,7 @@ code, pre { font-family: $monospace; }
   background: url('~/static/img/form-bg.png') top center repeat-y;
   padding-left: 12.5%;
   padding-right: 12.5%;
-  margin-top: 1.5em;
+  margin-top: -1em;
 }
 
 @media (max-width: 850px) {
@@ -463,6 +463,9 @@ code, pre { font-family: $monospace; }
 
 #status {
   margin: 5em auto;
+  h2 {
+    @extend h1;
+  }
   ul {
     margin-bottom: 3px;
     li {
@@ -523,7 +526,7 @@ code, pre { font-family: $monospace; }
 
 #newsletter {
   @extend .bumped-in;
-  margin: 5em auto;
+  margin: 7em auto 5em auto;
   h2 {
     font-size: 2.6rem;
   }
@@ -559,6 +562,7 @@ code, pre { font-family: $monospace; }
 #sponsors {
   margin-top: 5em;
   h2 {
+    @extend h1;
     margin-bottom: 1.5em;
   }
   img { max-width: 100%; }
@@ -569,7 +573,7 @@ code, pre { font-family: $monospace; }
   }
 }
 
-// FAQ PAGE
+/* FAQ PAGE */
 #faq {
   h3 {
     font-size: 2rem;
@@ -578,6 +582,25 @@ code, pre { font-family: $monospace; }
   p, li {
     font-size: 1.8rem;
     color: rgba(255,255,255,0.7);
+  }
+}
+
+/* STATUS PAGE */
+#status-dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat( auto-fit, minmax(250px, 1fr) );
+  grid-gap: 1em;
+  div {
+    background-color: rgba(255,255,255,.05);
+    padding: 20px 20px 20px 20px;
+    h3 {
+      font-size: 1.8rem;
+      margin-bottom: 0.5em;
+    }
+    p {
+      font-size: 1.4rem;
+      margin-bottom: 0;
+    }
   }
 }
 

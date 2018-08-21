@@ -1,7 +1,7 @@
 <template>
   <article id="faq">
     <div class="bumped-in">
-      <h2>Frequently Asked Questions</h2>
+      <h1>Frequently Asked Questions</h1>
       <h3>Why?</h3>
       <p>There are too many light clients on the Ethereum network and not enough full
           nodes to service them all. On a bad day, it can take several hours to finally
