@@ -18,6 +18,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+@media (max-width: 400px) {
+  body { overflow-x: hidden; }
+}
+
 h1, h2 { font-family: $monospace; }
 h3, h4, h5, h6 { font-family: $sans-serif; }
 
@@ -94,6 +98,9 @@ a {
   position: absolute;
   bottom: 38px;
   left: -181px;
+  max-width: 20vw;
+  overflow-x: scroll;
+  overflow-y: hidden;
   p {
     font-size: 1.4rem;
     margin-bottom: 1rem;
@@ -315,6 +322,15 @@ a {
   margin-top: 1.5em;
 }
 
+@media (max-width: 850px) {
+  .index-form {
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
 #intro {
   h2 {
     font-size: 3rem;
@@ -376,14 +392,9 @@ a {
     width: 100%;
     float: none;
     background-color: #fff;
-    margin-left: -12.5%;
-    margin-right: -12.5%;
-    width: 125%;
+    width: 97.6vw;
+    margin-left:-9.5%;
     padding-right: 2em;
-    form {
-      //padding-left: 0;
-      //padding-right: 0;
-    }
   }
 }
 
@@ -486,7 +497,7 @@ a {
 }
 
 @media (max-width: 750px) {
-  #status { width: 118%; margin-left:-9%; margin-right: -9%; }
+  #status { width: 97.6vw; margin-left:-9.5%; }
 }
 
 #newsletter {
