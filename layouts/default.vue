@@ -37,7 +37,7 @@
       <nav class="row">
         <ul class="six columns">
           <li>
-            <a href="" class="button button-primary button-small">Reserve Your vipnode</a>
+            <a href="/#intro" class="button button-primary button-small">Reserve Your vipnode</a>
           </li>
           <li>
             <a href="https://github.com/vipnode/vipnode.org">Source code</a>
@@ -46,19 +46,19 @@
             <a href="">Docs + support</a>
           </li>
           <li>
-            <nuxt-link to="/status">Status</nuxt-link>
+            <a href="/#status">Status</a>
           </li>
           <li>
-            <nuxt-link to="/#newsletter">Get updates</nuxt-link>
+            <a href="/#newsletter">Get updates</a>
           </li>
           <li>
             <a href="">About</a>
           </li>
           <li>
-            <a href="">Blog</a>
+            <a href="https://medium.com/@shazow/an-economic-incentive-for-running-ethereum-full-nodes-ecc0c9ebe22">Blog</a>
           </li>
           <li>
-            <nuxt-link to="/faw">FAQ</nuxt-link>
+            <nuxt-link to="/faq">FAQ</nuxt-link>
           </li>
           <li>
             <a href="">Press</a>
