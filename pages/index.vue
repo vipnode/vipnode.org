@@ -37,7 +37,7 @@
       </div>
     </section>
 
-    <section id="status">
+    <section id="status" class="bumped-in">
       <h2 class="text-center">Status + Progress</h2>
       <ul>
         <li>

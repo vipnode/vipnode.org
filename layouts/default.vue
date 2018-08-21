@@ -12,7 +12,7 @@
       <nav class="seven columns">
         <ul>
           <li class="hidden-md-up">
-            <nuxt-link to="/" class="button-primary button">Reserve</nuxt-link>
+            <a href="/#intro" class="button-primary button">Reserve</a>
           </li>
           <li>
             <nuxt-link to="/faq">FAQ</nuxt-link>
@@ -30,7 +30,6 @@
       </nav>
     </div>
 
-
     <nuxt/>
 
     <div id="footer">
@@ -46,7 +45,7 @@
             <a href="">Docs + support</a>
           </li>
           <li>
-            <a href="/#status">Status</a>
+            <nuxt-link to="/status">Status</nuxt-link>
           </li>
           <li>
             <a href="/#newsletter">Get updates</a>

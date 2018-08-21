@@ -28,12 +28,14 @@ h3, h4, h5, h6 { font-family: $sans-serif; }
 a {
   color: $link-color;
   text-decoration: none;
-  transition: 0.3s;
+  transition: 0.2s;
 }
 
 .hl1, .hl2 { font-weight: bold; }
 .hl1 { color: $highlight; }
 .hl2 { color: $ethereum-blue; }
+
+code, pre { font-family: $monospace; }
 
 .button, input[type="submit"] {
   background-color: lighten($background, 3%);
@@ -168,6 +170,20 @@ a {
   }
 }
 
+.bumped-in {
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (max-width: 1000px) {
+  .bumped-in { width: 85%; }
+}
+
+@media (max-width: 750px) {
+  .bumped-in { width: auto; }
+}
+
 /* HEADER */
 .nav {
   margin-top: 1em;
@@ -262,6 +278,11 @@ a {
       margin-left: 0;
     }
   }
+}
+
+/* CONTENT */
+.container article {
+  margin-top: 1.5em;
 }
 
 /* FOOTER */
@@ -443,7 +464,6 @@ a {
 }
 
 #status {
-  width: 70%;
   margin: 5em auto;
   ul {
     margin-bottom: 3px;
@@ -451,7 +471,7 @@ a {
       list-style: none;
       background-color: #2A598F;
       margin-bottom: 3px;
-      padding: 1em 1em 1em 4.5em;
+      padding: 1em 2em 1em 4.5em;
       position: relative;
       .icon {
         position: absolute;
@@ -499,11 +519,7 @@ a {
   }
 }
 
-@media (max-width: 1000px) {
-  #status { width: 85%; }
-}
-
-@media (max-width: 750px) {
+@media (max-width: 450px) {
   #status { width: 97.6vw; margin-left:-9.5%; }
 }
 
@@ -559,6 +575,18 @@ a {
     display: grid;
     grid-template-columns: repeat( auto-fit, minmax(250px, 1fr) );
     grid-gap: 20px;
+  }
+}
+
+// FAQ PAGE
+#faq {
+  h3 {
+    font-size: 2rem;
+    margin-bottom: 0.2em;
+  }
+  p, li {
+    font-size: 1.8rem;
+    color: rgba(255,255,255,0.7);
   }
 }
 
