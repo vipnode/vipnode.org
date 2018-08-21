@@ -90,8 +90,6 @@ code, pre { font-family: $monospace; }
 }
 
 .tooltip {
-  //width: 400px;
-  //display: none;
   background-color: #fff;
   border: 1px solid $highlight;
   border-radius: 5px;
@@ -200,11 +198,11 @@ code, pre { font-family: $monospace; }
   h2 {
     font-size: 1.3rem;
     line-height: 1.5;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.05em;
     position: relative;
-    top: -12px;
+    top: -10px;
     left: 34px;
-    max-width: 380px;
+    max-width: 360px;
     font-family: $sans-serif;
     color: rgba(255,255,255,.70);
     margin-bottom: 0;
