@@ -46,6 +46,9 @@
           <li>You added the vipnode enode to your <code>geth/static-nodes.json</code></li>
       </ol>
     </div>
+
+    <hr/>
+    
     <Newsletter />
     <Sponsors />
   </article>

@@ -42,7 +42,7 @@
             <a href="https://github.com/vipnode/vipnode.org">Source code</a>
           </li>
           <li>
-            <a href="">Docs + support</a>
+            <nuxt-link to="/docs">Docs + support</nuxt-link>
           </li>
           <li>
             <nuxt-link to="/status">Status</nuxt-link>

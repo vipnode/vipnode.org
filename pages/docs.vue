@@ -1,7 +1,7 @@
 <template>
   <article>
     <div class="bumped-in">
-    <h1>Press</h1>
+    <h1>Docs and support</h1>
       <p>Coming soon.</p>
     </div>
 

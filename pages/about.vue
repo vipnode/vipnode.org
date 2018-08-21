@@ -11,6 +11,8 @@
       <p>You're looking for <a href="https://news.ycombinator.com" rel="nofollow">Hacker News</a>.</p>
     </div>
 
+    <hr/>
+
     <Newsletter />
     <Sponsors />
   </article>

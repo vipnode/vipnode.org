@@ -37,6 +37,14 @@ a {
 
 code, pre { font-family: $monospace; }
 
+hr {
+  @extend .bumped-in;
+  border-width: 5px;
+  border-color: lighten($background, 5%);
+  margin-top: 5em;
+  margin-bottom: 5em;
+}
+
 .button, input[type="submit"] {
   background-color: lighten($background, 3%);
   border-color: lighten($background, 3%);
@@ -64,7 +72,6 @@ code, pre { font-family: $monospace; }
   padding: 0 15px;
 }
 
-/* EXTRAS */
 .all-caps {
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -526,7 +533,7 @@ code, pre { font-family: $monospace; }
 
 #newsletter {
   @extend .bumped-in;
-  margin: 7em auto 5em auto;
+  margin: 5em auto;
   h2 {
     font-size: 2.6rem;
   }

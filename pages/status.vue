@@ -20,6 +20,9 @@
         <p>????</p>
       </div>
     </div>
+
+    <hr/>
+    
     <Newsletter />
     <Sponsors />
   </article>
