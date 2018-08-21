@@ -51,7 +51,7 @@
             <a href="/#newsletter">Get updates</a>
           </li>
           <li>
-            <a href="">About</a>
+            <nuxt-link to="/about">About</nuxt-link>
           </li>
           <li>
             <a href="https://medium.com/@shazow/an-economic-incentive-for-running-ethereum-full-nodes-ecc0c9ebe22">Blog</a>
