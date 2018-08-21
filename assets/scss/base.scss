@@ -97,10 +97,9 @@ a {
   box-shadow: 0 0 30px rgba(0,0,0,0.1);
   position: absolute;
   bottom: 38px;
-  left: -181px;
-  max-width: 20vw;
-  overflow-x: scroll;
-  overflow-y: hidden;
+  left: 50%;
+  transform: translateX(-39.5%); // FIXME: Hack inline on amount tooltip
+  min-width: 250px;
   p {
     font-size: 1.4rem;
     margin-bottom: 1rem;
@@ -134,6 +133,14 @@ a {
     border-width:20px 20px 0;
     border-style:solid;
     border-color:#fff transparent;
+  }
+}
+
+@media (max-width: 400px) {
+  .tooltip {
+    max-width: 20vw;
+    overflow-x: scroll;
+    overflow-y: hidden;
   }
 }
 
