@@ -46,14 +46,16 @@
           <li>You added the vipnode enode to your <code>geth/static-nodes.json</code></li>
       </ol>
     </div>
+    <Newsletter />
     <Sponsors />
   </article>
 </template>
 
 <script>
 import Sponsors from "~/components/Sponsors.vue"
+import Newsletter from "~/components/Newsletter.vue"
 
 export default {
-  components: { Sponsors },
+  components: { Sponsors, Newsletter },
 }
 </script>

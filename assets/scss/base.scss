@@ -524,7 +524,7 @@ code, pre { font-family: $monospace; }
 }
 
 #newsletter {
-  width: 63%;
+  @extend .bumped-in;
   margin: 5em auto;
   h2 {
     font-size: 2.6rem;
@@ -552,14 +552,6 @@ code, pre { font-family: $monospace; }
     }
     p small { top: 0; }
   }
-}
-
-@media (max-width: 1000px) {
-  #newsletter { width: 85%; }
-}
-
-@media (max-width: 750px) {
-  #newsletter { width: 100%; }
 }
 
 @media (max-width: 400px) {
