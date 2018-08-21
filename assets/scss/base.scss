@@ -80,10 +80,12 @@ a {
   height: 15px;
   display: inline-block;
   background-size: cover;
+  cursor: pointer;
 }
 
 .tooltip {
   //width: 400px;
+  //display: none;
   background-color: #fff;
   border: 1px solid $highlight;
   border-radius: 5px;

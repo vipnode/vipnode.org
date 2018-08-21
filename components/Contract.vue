@@ -5,14 +5,14 @@
       <li v-for="msg in messages" :class="msg.kind">{{msg.body}}</li>
     </ul>
     <label for="enode">What is your enode id?
-      <div class="tooltip-container">
-        <div class="enode-help tooltip">
+      <div class="tooltip-container" v-on:click="tooltip=!tooltip">
+        <div class="enode-help tooltip" v-if="tooltip">
           <p><strong>When you start your Go Ethereum client, it prints out your enode ID.</strong> This encodes the public key of your node that can be used for authentication.</p>
           <p><strong>It looks like this</strong>:<br/>
           <code>enode://6f8a80d143…b39763a4c0@123.123.123.123:30303?discport=30301</code></p>
           <p><strong>Alternatively, if you have a console to a running geth node, you can run this to print your enode ID:</strong></br>
           <code>admin.nodeInfo.enode</code></p>
-          <a href="" class="button button-primary">Got it</a>
+          <button type="button" class="button-primary">Got it</button>
         </div>
       </div>
     </label>
@@ -48,6 +48,8 @@ export default {
       amount: '0.02',
       messages: [],
       pendingTx: '',
+      tooltip: false,
+      hi: true,
     }
   },
   methods: {
