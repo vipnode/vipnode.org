@@ -60,7 +60,7 @@
             <nuxt-link to="/faq">FAQ</nuxt-link>
           </li>
           <li>
-            <a href="">Press</a>
+            <nuxt-link to="/press">Press</nuxt-link>
           </li>
         </ul>
 
