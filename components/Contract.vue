@@ -1,22 +1,33 @@
 <template>
   <form v-on:submit='submit' v-on:submit.prevent>
+    <h2>Become a VIP on vipnode</h2>
     <ul class="messages" v-if="messages.length > 0">
       <li v-for="msg in messages" :class="msg.kind">{{msg.body}}</li>
     </ul>
-    <ol>
-      <li>
-        <p>What is your enode? <input type="text" v-model="enode" placeholder="enode://..." /></p>
-      </li>
-      <li>
-        <p>What would you like to pay for 30 days? <input type="text" v-model="amount" value="0.2" placeholder="0.2" /> in ETH</p>
-      </li>
-      <li>
-        <p><input type="submit" value="Execute Smart Contract" :disabled="loading" /> <small>(requires <a href="https://metamask.io/" target="_blank">a web3-enabled browser</a>)</small></p>
-      </li>
-      <li>
-        <p><a href="#subscribe">Subscribe to updates</a></p>
-      </li>
-    </ol>
+    <label for="enode">What is your enode id?
+      <div class="tooltip-container" v-on:click="enodetooltip=!enodetooltip">
+        <div class="enode-help tooltip" v-if="enodetooltip">
+          <p><strong>When you start your Go Ethereum client, it prints out your enode ID.</strong> This encodes the public key of your node that can be used for authentication.</p>
+          <p><strong>It looks like this</strong>:<br/>
+          <code>enode://6f8a80d143…b39763a4c0@123.123.123.123:30303?discport=30301</code></p>
+          <p><strong>Alternatively, if you have a console to a running geth node, you can run this to print your enode ID:</strong></br>
+          <code>admin.nodeInfo.enode</code></p>
+          <button type="button" class="button-primary">Got it</button>
+        </div>
+      </div>
+    </label>
+    <input type="text" v-model="enode" placeholder="enode://..." name="enode" class="enode"/>
+    <label for="amount">What would you like to pay for 30 days?
+      <div class="tooltip-container" v-on:click="amounttooltip=!amounttooltip">
+        <div class="enode-help tooltip" v-if="amounttooltip" style="transform: translateX(-42%);">
+          <p>Pay what you want while vipnode is in beta &#8212; amount will not affect your vipnode status. You will receive a reserved peer slot on our VIP network, allowing you to bypass the server’s limits even if the server is full.<!--XXX: Update this with better text.--></p>
+          <button type="button" class="button-primary">Got it</button>
+        </div>
+      </div>
+    </label>
+    <input type="text" v-model="amount" value="0.2" placeholder="0.2" name="amount" class="amount"/><span> in ETH</span><br/>
+    <input type="submit" value="Execute Smart Contract" :disabled="loading" class="button-primary"/>
+    <p><small>(requires <a href="https://metamask.io/" target="_blank">a web3-enabled browser</a>)</small></p>
     <div class="messages" v-if="pendingTx">
       <p class="success">
         Transaction submitted. It can take a few minutes. <a :href="'https://etherscan.io/tx/' + pendingTx" target="_blank">Watch it here.</a>
@@ -44,6 +55,8 @@ export default {
       amount: '0.02',
       messages: [],
       pendingTx: '',
+      enodetooltip: false,
+      amounttooltip: false,
     }
   },
   methods: {

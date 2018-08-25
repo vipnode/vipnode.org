@@ -1,0 +1,38 @@
+<template>
+  <article>
+    <h1>Status Dashboard</h1>
+
+    <div id="status-dashboard-grid">
+      <div>
+        <h3>Number of vipnode hosts active/registered:</h3>
+        <p>????</p>
+      </div>
+      <div>
+        <h3>Number of vipnode clients active/registered:</h3>
+        <p>????</p>
+      </div>
+      <div>
+        <h3>Total client balance available:</h3>
+        <p>????</p>
+      </div>
+      <div>
+        <h3>Total host balance earned:</h3>
+        <p>????</p>
+      </div>
+    </div>
+
+    <hr/>
+    
+    <Newsletter />
+    <Sponsors />
+  </article>
+</template>
+
+<script>
+import Sponsors from "~/components/Sponsors.vue"
+import Newsletter from "~/components/Newsletter.vue"
+
+export default {
+  components: { Sponsors, Newsletter },
+}
+</script>
