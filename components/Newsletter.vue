@@ -7,11 +7,10 @@
           method="post"
           target="popupwindow"
           onsubmit="window.open('https://tinyletter.com/vipnode', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
-      <!--<label for="tlemail">Email address:</label>-->
       <input type="text" name="email" id="tlemail" placeholder="satoshin@gmx.com" />
       <input type="hidden" value="1" name="embed" />
       <input type="submit" value="Subscribe" class="button-primary"/>
     </form>
-    <p><small>I promise no spam, just updates on progress.</small></p>
+    <p><small>I promise no ICO spam, just project updates.</small></p>
   </section>
 </template>

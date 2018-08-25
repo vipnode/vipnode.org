@@ -39,7 +39,7 @@
       <h3>My geth is stuck at "IPC endpoint opened", or I keep seeing "no suitable peers available"</h3>
       <p>If you didn't pay for vipnode (or your 30 days expired), then that means there
           aren't enough free connection slots available. You can keep waiting (it can take
-          a few hours), or <a href="#reserve">pay for vipnode access</a>.</p>
+          a few hours), or <a href="/#reserve">pay for vipnode access</a>.</p>
       <p>If you paid for vipnode, make sure:</p>
       <ol>
           <li>You're connecting from the same enode ID as you specified in your payment</li>
@@ -48,7 +48,7 @@
     </div>
 
     <hr/>
-    
+
     <Newsletter />
     <Sponsors />
   </article>

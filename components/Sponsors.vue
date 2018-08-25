@@ -8,11 +8,9 @@
       <a href="https://infura.io/">
         <img src="~/static/img/infura.png" alt="Infura" />
       </a>
-      <a href="mailto:andrey@vipnode.org" class="hidden-md-down">
-        <img src="~/static/img/you.png" alt="You?" />
+      <a href="mailto:partner@vipnode.org" class="placeholder" title="Email for partnership opportunities">
       </a>
-      <a href="mailto:andrey@vipnode.org" class="hidden-lg-down">
-        <img src="~/static/img/you.png" alt="You?" />
+      <a href="mailto:partner@vipnode.org" class="placeholder" title="Email for partnership opportunities">
       </a>
     </div>
   </section>
