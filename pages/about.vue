@@ -6,12 +6,8 @@
       <p>I build a lot of <a href="https://github.com/shazow">open source things</a>
         and <a href="https://shazow.net/">fun experiments like this one</a>.</p>
       <h3>Problems? Questions? Accolades?</h3>
-      <p>Email <a href="mailto:vipnode@shazow.net">vipnode@shazow.net</a>.</p>
-      <h3>Hatred? Vitriol?</h3>
-      <p>You're looking for <a href="https://news.ycombinator.com" rel="nofollow">Hacker News</a>.</p>
+      <p>Email <a href="mailto:andrey@vipnode.org">andrey@vipnode.org</a>.</p>
     </div>
-
-    <hr/>
 
     <Newsletter />
     <Sponsors />

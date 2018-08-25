@@ -39,8 +39,9 @@ code, pre { font-family: $monospace; }
 
 hr {
   @extend .bumped-in;
-  border-width: 5px;
-  border-color: lighten($background, 5%);
+  border-width: 0;
+  height: 5px;
+  background: lighten($background, 5%);
   margin-top: 5em;
   margin-bottom: 5em;
 }
@@ -468,33 +469,59 @@ hr {
   }
 }
 
-#status {
+#roadmap {
   margin: 5em auto;
+  padding: 0;
+
   h2 {
     @extend h1;
   }
+
   ul {
     margin-bottom: 3px;
+
     li {
+      &.current {
+        background-color: $ethereum-blue;
+      }
+      &.current::before {
+        content: "";
+        width: 0;
+        height: 0;
+        position: absolute;
+        margin-left: -4.5em;
+        border-style: solid;
+        border-width: 50px 0 50px 20px;
+        border-color: transparent transparent transparent $background;
+      }
+
       list-style: none;
       background-color: #2A598F;
       margin-bottom: 3px;
       padding: 1em 2em 1em 4.5em;
       position: relative;
+
       .icon {
         position: absolute;
-        left: 1.9em;
-        top: 33%;
+        margin-left: -2em;
+        line-height: 1em;
+        vertical-align: middle;
         &::before {
-          content: "\0231B";
+          content: "";
         }
       }
-      .icon.check {
+      .icon.done {
         &::before {
           content: "\02714";
         }
       }
-      h4 {
+      .icon.progress {
+        &::before {
+          content: "👷";
+        }
+      }
+
+      h4, h4 a{
         color: $highlight;
         font-family: $monospace;
         text-transform: uppercase;
@@ -508,7 +535,6 @@ hr {
     }
   }
   .latest {
-    background-color: $ethereum-blue;
     padding: 2em 2em 1.5em 2em;
     .date {
       font-size: 1.2rem;
@@ -573,6 +599,16 @@ hr {
     margin-bottom: 1.5em;
   }
   img { max-width: 100%; }
+  .placeholder {
+    &::before {
+      content: "+";
+      line-height: 123px;
+      color: rgba(255, 255, 255, 0.3);
+    }
+    width: 270px;
+    height: 123px;
+    border: 1px dashed rgba(255, 255, 255, 0.15);
+  }
   .grid {
     display: grid;
     grid-template-columns: repeat( auto-fit, minmax(250px, 1fr) );

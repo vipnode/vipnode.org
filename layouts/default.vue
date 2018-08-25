@@ -7,7 +7,7 @@
             <img src="~/static/img/vipnode.png" alt="vipnode" id="vipnode-logo"/>
           </a>
         </h1>
-        <h2>Reserve a spot for your Go-Ethereum Light Client, powered by a smart contract.</h2>
+        <h2>Economic incentive for running Ethereum nodes.</h2>
       </div>
       <nav class="seven columns">
         <ul>
@@ -21,7 +21,7 @@
             <nuxt-link to="/status">Status</nuxt-link>
           </li>
           <li>
-            <a href="https://medium.com/@shazow/an-economic-incentive-for-running-ethereum-full-nodes-ecc0c9ebe22">Blog</a>
+            <a href="https://medium.com/vipnode">Blog</a>
           </li>
           <li class="hidden-md-down">
             <nuxt-link to="/" class="button-primary button">Reserve</nuxt-link>
@@ -54,7 +54,7 @@
             <nuxt-link to="/about">About</nuxt-link>
           </li>
           <li>
-            <a href="https://medium.com/@shazow/an-economic-incentive-for-running-ethereum-full-nodes-ecc0c9ebe22">Blog</a>
+            <a href="https://medium.com/vipnode">Blog</a>
           </li>
           <li>
             <nuxt-link to="/faq">FAQ</nuxt-link>

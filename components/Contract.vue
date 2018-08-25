@@ -1,6 +1,6 @@
 <template>
   <form v-on:submit='submit' v-on:submit.prevent>
-    <h2>Become a VIP on vipnode</h2>
+    <h2>Try the Vipnode v1 MVP and become a VIP!</h2>
     <ul class="messages" v-if="messages.length > 0">
       <li v-for="msg in messages" :class="msg.kind">{{msg.body}}</li>
     </ul>
@@ -17,7 +17,7 @@
       </div>
     </label>
     <input type="text" v-model="enode" placeholder="enode://..." name="enode" class="enode"/>
-    <label for="amount">What would you like to pay for 30 days?
+    <label for="amount">What would you like to pay for 30 days of access?
       <div class="tooltip-container" v-on:click="amounttooltip=!amounttooltip">
         <div class="enode-help tooltip" v-if="amounttooltip" style="transform: translateX(-42%);">
           <p>Pay what you want while vipnode is in beta &#8212; amount will not affect your vipnode status. You will receive a reserved peer slot on our VIP network, allowing you to bypass the server’s limits even if the server is full.<!--XXX: Update this with better text.--></p>
