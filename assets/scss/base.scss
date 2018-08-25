@@ -485,13 +485,16 @@ hr {
         background-color: $ethereum-blue;
       }
       &.current::before {
+        // Triangle
         content: "";
         width: 0;
         height: 0;
+        top: 50%;
+        margin-top: -30px;
         position: absolute;
         margin-left: -4.5em;
         border-style: solid;
-        border-width: 50px 0 50px 20px;
+        border-width: 30px 0 30px 20px;
         border-color: transparent transparent transparent $background;
       }
 

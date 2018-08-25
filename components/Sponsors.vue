@@ -1,6 +1,6 @@
 <template>
   <section id="sponsors" class="text-center">
-    <h2>Sponsors</h2>
+    <h2>Sponsors &amp; Partnerships</h2>
     <div class="grid">
       <a href="https://www.ethereum.org/foundation">
         <img src="~/static/img/ethereum.png" alt="Ethereum Foundation" />
