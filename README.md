@@ -11,7 +11,7 @@ More details in this blog post: [An economic incentive for running Ethereum Full
 ### How does it work?
 
 On the front-end, there's a smart contract,
-[contracts/vipnode.sol](https://github.com/shazow/vipnode/blob/master/contracts/vipnode.sol).
+[contracts/vipnode.sol](https://github.com/shazow/vipnode/blob/v1/contracts/vipnode.sol).
 
 The smart contract keeps the state of which enode is registered and what the
 expiration time is.
@@ -23,7 +23,7 @@ here](https://github.com/ethereum/go-ethereum/pull/16333).
 
 The geth-vipnode is driven by some JavaScript which loads the smart contract and
 monitors events of new registered members, see 
-[run.js](https://github.com/shazow/vipnode/blob/master/run.js).
+[run.js](https://github.com/shazow/vipnode/blob/v1/run.js).
 
 ## vipnode v2: Node Pools
 
