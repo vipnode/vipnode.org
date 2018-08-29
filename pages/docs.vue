@@ -4,11 +4,6 @@
     <h1>Docs and support</h1>
       <p>Coming soon.</p>
     </div>
-
-    <hr/>
-
-    <Newsletter />
-    <Sponsors />
   </article>
 </template>
 

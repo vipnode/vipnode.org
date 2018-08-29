@@ -4,11 +4,6 @@
     <h1>Press</h1>
       <p>Coming soon.</p>
     </div>
-
-    <hr/>
-
-    <Newsletter />
-    <Sponsors />
   </article>
 </template>
 

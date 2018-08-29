@@ -295,7 +295,7 @@ hr {
 #footer {
   border-top: 1px solid rgba(255,255,255,0.2);
   padding-top: 2em;
-  margin-top: 3em;
+  margin-top: 5em;
   margin-bottom: 1em;
   nav ul {
     list-style: none;
@@ -597,6 +597,7 @@ hr {
 
 #sponsors {
   margin-top: 5em;
+  margin-bottom: -2em;
   h2 {
     @extend h1;
     margin-bottom: 1.5em;
