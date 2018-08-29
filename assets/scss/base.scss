@@ -6,6 +6,7 @@ $ethereum-blue:    #4A90E2 !default;
 $background:       #0C2643 !default;
 $link-color:       #79E4F0 !default;
 $link-color-dark:  #2B97A3 !default;
+$error:            #ea5216 !default;
 
 $monospace:        'PT Mono', monospace;
 $sans-serif:       'PT Sans', sans-serif;
@@ -188,6 +189,12 @@ hr {
 
 @media (max-width: 750px) {
   .bumped-in { width: auto; }
+}
+
+form .messages {
+  .error {
+    color: $error;
+  }
 }
 
 /* HEADER */
