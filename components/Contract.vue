@@ -15,8 +15,10 @@
           <button type="button" class="button-primary">Got it</button>
         </div>
       </div>
+      <p>
+        <input type="text" v-model="enode" placeholder="enode://..." name="enode" class="enode"/>
+      </p>
     </label>
-    <input type="text" v-model="enode" placeholder="enode://..." name="enode" class="enode"/>
     <label for="amount">What would you like to pay for 30 days of access?
       <div class="tooltip-container" v-on:click="amounttooltip=!amounttooltip">
         <div class="enode-help tooltip" v-if="amounttooltip" style="transform: translateX(-42%);">
@@ -24,15 +26,22 @@
           <button type="button" class="button-primary">Got it</button>
         </div>
       </div>
+      <p>
+        <input type="text" v-model="amount" value="0.2" placeholder="0.2" name="amount" class="amount"/><span> in ETH</span>
+      </p>
     </label>
-    <input type="text" v-model="amount" value="0.2" placeholder="0.2" name="amount" class="amount"/><span> in ETH</span><br/>
-    <input type="submit" value="Execute Smart Contract" :disabled="loading" class="button-primary"/>
-    <p><small>(requires <a href="https://metamask.io/" target="_blank">a web3-enabled browser</a>)</small></p>
+    <p>
+      <input type="submit" value="Execute Smart Contract" :disabled="loading" class="button-primary"/>
+      <small>(requires <a href="https://metamask.io/" target="_blank">a web3-enabled browser</a>)</small>
+    </p>
     <div class="messages" v-if="pendingTx">
       <p class="success">
         Transaction submitted. It can take a few minutes. <a :href="'https://etherscan.io/tx/' + pendingTx" target="_blank">Watch it here.</a>
       </p>
     </div>
+    <p>
+      Once your node is registered, <a href="/faq#connect">follow the connection instructions</a>.
+    </p>
   </form>
 </template>
 

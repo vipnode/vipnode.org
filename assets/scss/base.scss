@@ -46,6 +46,10 @@ hr {
   margin-bottom: 5em;
 }
 
+input[type="text"] {
+  color: #0c2643;
+}
+
 .button, input[type="submit"] {
   background-color: lighten($background, 3%);
   border-color: lighten($background, 3%);
@@ -389,16 +393,17 @@ hr {
 #get-started {
   color: #0C2643;
   form {
-    padding: 2.5em 0 0.5em 2em;
+    margin: 2.5em 0 2.5em 2em;
     font-size: 1.8rem;
     h2 {
       color: $ethereum-blue;
       font-size: 2.5rem;
     }
-    label {
-      margin-top: 0.5em;
+    p {
+      margin-bottom: 0.5em;
     }
     input[type="text"] {
+      margin-top: 0.5em;
       font-size: 1.4rem;
     }
     input.enode { width: 100%; }
@@ -408,7 +413,7 @@ hr {
       font-size: 1.6rem;
       height: 42px;
       margin-bottom: 0;
-      margin-top: 15px;
+      margin-right: 1em;
     }
     small a { color: $link-color-dark; }
   }

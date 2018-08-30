@@ -30,6 +30,16 @@
       <p>Right now I'm running it on Scaleway for about $30/mo, which should hopefully handle many dozens of peers.</p>
       <p>I'm collecting data on the resource requirements from this experiment which will
           help inform the pricing in the future.</p>
+      <h3 id="connect">How do I connect to the vipnode?</h3>
+      <p>Set your <code>&lt;datadir&gt;/geth/static-nodes.json</code> to:</p>
+
+      <pre><code>[
+    "enode://19b5013d24243a659bda7f1df13933bb05820ab6c3ebf6b5e0854848b97e1f7e308f703466e72486c5bc7fe8ed402eb62f6303418e05d330a5df80738ac974f6@163.172.138.100:30303?discport=30301"
+]</code></pre>
+
+      <p>and restart your Ethereum client.</p>
+      <p>If you'd like to limit your client just to the vipnode, use the <code>--nodiscover</code>
+        flag.</p>
       <h3>Can I connect to a vipnode for free?</h3>
       <p>Yes! Each vipnode also allocates at least 25 slots to regular
           peers and several public light client peers. These numbers can
