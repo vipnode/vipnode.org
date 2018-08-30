@@ -6,6 +6,7 @@ $ethereum-blue:    #4A90E2 !default;
 $background:       #0C2643 !default;
 $link-color:       #79E4F0 !default;
 $link-color-dark:  #2B97A3 !default;
+$error:            #ea5216 !default;
 
 $monospace:        'PT Mono', monospace;
 $sans-serif:       'PT Sans', sans-serif;
@@ -194,6 +195,12 @@ input[type="text"] {
   .bumped-in { width: auto; }
 }
 
+form .messages {
+  .error {
+    color: $error;
+  }
+}
+
 /* HEADER */
 .nav {
   margin-top: 1em;
@@ -299,7 +306,7 @@ input[type="text"] {
 #footer {
   border-top: 1px solid rgba(255,255,255,0.2);
   padding-top: 2em;
-  margin-top: 3em;
+  margin-top: 5em;
   margin-bottom: 1em;
   nav ul {
     list-style: none;
@@ -602,6 +609,7 @@ input[type="text"] {
 
 #sponsors {
   margin-top: 5em;
+  margin-bottom: -2em;
   h2 {
     @extend h1;
     margin-bottom: 1.5em;

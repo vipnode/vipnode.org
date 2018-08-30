@@ -20,9 +20,6 @@
         <p>Coming soon</p>
       </div>
     </div>
-
-    <Newsletter />
-    <Sponsors />
   </article>
 </template>
 

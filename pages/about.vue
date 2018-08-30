@@ -8,9 +8,6 @@
       <h3>Problems? Questions? Accolades?</h3>
       <p>Email <a href="mailto:andrey@vipnode.org">andrey@vipnode.org</a>.</p>
     </div>
-
-    <Newsletter />
-    <Sponsors />
   </article>
 </template>
 
