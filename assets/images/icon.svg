@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="210px" height="162px" viewBox="0 0 210 162" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.2 (57519) - http://www.bohemiancoding.com/sketch -->
+    <title>Smol</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Smol" transform="translate(-1.000000, 0.000000)" stroke="#E75326">
+            <polyline id="Path-2" stroke-width="20" stroke-linecap="round" points="59.2011719 151.509766 34.1367188 78.6445312 70.8789063 85.84375 105.369141 37.8730469 136.496094 85.84375 173.570312 79 160.09375 121.550781"></polyline>
+            <circle id="Oval" stroke-width="19" fill="#FFFFFF" cx="105.642578" cy="25.5205078" r="15.8837891"></circle>
+            <circle id="Oval" stroke-width="19" fill="#FFFFFF" cx="184.869141" cy="69.0302734" r="15.8837891"></circle>
+            <circle id="Oval" stroke-width="19" fill="#FFFFFF" cx="26.3730469" cy="68.8076172" r="15.8837891"></circle>
+        </g>
+    </g>
+</svg>
