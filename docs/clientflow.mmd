@@ -4,10 +4,11 @@ sequenceDiagram
     participant Pool as vipnode pool
     participant Host as vipnode host
     participant HostNode as HostNode (nodeB)
+    Host->>Pool: vipnode_host(nodeB)
     loop Keepalive
         HostNode--xPool: vipnode_update(peers, nodeInfo) 
     end
-    Client->>Pool: vipnode_connect(nodeA)
+    Client->>Pool: vipnode_client(nodeA)
     Pool--xHost: whitelist(nodeA)
     Host->HostNode: admin_addTrustedPeer(nodeA)
     Host--xPool: 👍
