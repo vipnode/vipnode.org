@@ -1,31 +1,25 @@
 <template>
-  <form v-on:submit='submit' v-on:submit.prevent>
+  <form v-on:submit='submit' v-on:submit.prevent class="contract">
     <h2>Try the Vipnode v1 MVP and become a VIP!</h2>
     <ul class="messages" v-if="messages.length > 0">
       <li v-for="msg in messages" :class="msg.kind">{{msg.body}}</li>
     </ul>
     <label for="enode">What is your enode id?
-      <div class="tooltip-container" v-on:click="enodetooltip=!enodetooltip">
-        <div class="enode-help tooltip" v-if="enodetooltip">
-          <p><strong>When you start your Go Ethereum client, it prints out your enode ID.</strong> This encodes the public key of your node that can be used for authentication.</p>
-          <p><strong>It looks like this</strong>:<br/>
+      <tooltip>
+        <p><strong>When you start your Go Ethereum client, it prints out your enode ID.</strong> This encodes the public key of your node that can be used for authentication.</p>
+        <p><strong>It looks like this</strong>:<br/>
           <code>enode://6f8a80d143…b39763a4c0@123.123.123.123:30303?discport=30301</code></p>
-          <p><strong>Alternatively, if you have a console to a running geth node, you can run this to print your enode ID:</strong></br>
+        <p><strong>Alternatively, if you have a console to a running geth node, you can run this to print your enode ID:</strong></br>
           <code>admin.nodeInfo.enode</code></p>
-          <button type="button" class="button-primary">Got it</button>
-        </div>
-      </div>
+      </tooltip>
       <p>
         <input type="text" v-model="enode" placeholder="enode://..." name="enode" class="enode"/>
       </p>
     </label>
     <label for="amount">What would you like to pay for 30 days of access?
-      <div class="tooltip-container" v-on:click="amounttooltip=!amounttooltip">
-        <div class="enode-help tooltip" v-if="amounttooltip" style="transform: translateX(-42%);">
-          <p>Pay what you want while vipnode is in beta &#8212; amount will not affect your vipnode status. You will receive a reserved peer slot on our VIP network, allowing you to bypass the server’s limits even if the server is full.<!--XXX: Update this with better text.--></p>
-          <button type="button" class="button-primary">Got it</button>
-        </div>
-      </div>
+      <tooltip>
+        <p>Pay what you want while vipnode is in beta &#8212; amount will not affect your vipnode status. You will receive a reserved peer slot on our VIP network, allowing you to bypass the server’s limits even if the server is full.<!--XXX: Update this with better text.--></p>
+      </tooltip>
       <p>
         <input type="text" v-model="amount" value="0.2" placeholder="0.2" name="amount" class="amount"/><span> in ETH</span>
       </p>
@@ -46,6 +40,8 @@
 </template>
 
 <script>
+import Tooltip from "~/components/Tooltip.vue"
+
 const reNodeID = new RegExp('[0-9a-f]{128}');
 
 function getContract() {
@@ -64,8 +60,6 @@ export default {
       amount: '0.02',
       messages: [],
       pendingTx: '',
-      enodetooltip: false,
-      amounttooltip: false,
     }
   },
   methods: {
@@ -171,5 +165,6 @@ export default {
       }.bind(this));
     },
   },
+  components: { Tooltip },
 }
 </script>

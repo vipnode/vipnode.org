@@ -92,7 +92,9 @@ input {
   text-align: center;
 }
 
-.tooltip-container {
+
+
+.tooltip {
   position: relative;
   background: url(~/static/img/tooltip.png) top left no-repeat;
   width: 15px;
@@ -100,60 +102,61 @@ input {
   display: inline-block;
   background-size: cover;
   cursor: pointer;
-}
 
-.tooltip {
-  background-color: #fff;
-  border: 1px solid $highlight;
-  border-radius: 5px;
-  padding: 20px;
-  box-shadow: 0 0 30px rgba(0,0,0,0.1);
-  position: absolute;
-  bottom: 38px;
-  left: 50%;
-  transform: translateX(-39.5%); // FIXME: Hack inline on amount tooltip
-  min-width: 250px;
-  p {
-    font-size: 1.4rem;
-    margin-bottom: 1rem;
-    line-height: 1.3;
+  .tooltip-body {
+    color: #0C2643;
+    background-color: #fff;
+    border: 1px solid $highlight;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 0 30px rgba(0,0,0,0.1);
+    position: absolute;
+    bottom: 38px;
+    left: 50%;
+    transform: translateX(-39.5%); // FIXME: Hack inline on amount tooltip
+    min-width: 250px;
+    p {
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+      line-height: 1.3;
+    }
+    code {
+      font-size: 1.1rem;
+      color: #444;
+      background-color: transparent;
+      padding: 0;
+      border: 0;
+    }
+    .button-primary {
+      @extend .button-small;
+      margin-bottom: 0;
+    }
+    &::before {
+      content:"";
+      position:absolute;
+      bottom:-20px;
+      left:35%;
+      border-width: 20px 20px 0;
+      border-style: solid;
+      border-color: $highlight transparent;
+    }
+    &::after {
+      content:"";
+      position:absolute;
+      bottom:-17px;
+      left:35%;
+      border-width:20px 20px 0;
+      border-style:solid;
+      border-color:#fff transparent;
+    }
   }
-  code {
-    font-size: 1.1rem;
-    color: #444;
-    background-color: transparent;
-    padding: 0;
-    border: 0;
-  }
-  .button-primary {
-    @extend .button-small;
-    margin-bottom: 0;
-  }
-  &::before {
-    content:"";
-    position:absolute;
-    bottom:-20px;
-    left:35%;
-    border-width: 20px 20px 0;
-    border-style: solid;
-    border-color: $highlight transparent;
-  }
-  &::after {
-    content:"";
-    position:absolute;
-    bottom:-17px;
-    left:35%;
-    border-width:20px 20px 0;
-    border-style:solid;
-    border-color:#fff transparent;
-  }
-}
 
-@media (max-width: 400px) {
-  .tooltip {
-    max-width: 20vw;
-    overflow-x: scroll;
-    overflow-y: hidden;
+  @media (max-width: 400px) {
+    .tooltip-body {
+      max-width: 20vw;
+      overflow-x: scroll;
+      overflow-y: hidden;
+    }
   }
 }
 
@@ -399,31 +402,33 @@ form .messages {
 
 #get-started {
   color: #0C2643;
-  form {
-    margin: 2.5em 0 2.5em 2em;
-    font-size: 1.8rem;
-    h2 {
-      color: $ethereum-blue;
-      font-size: 2.5rem;
-    }
-    p {
-      margin-bottom: 0.5em;
-    }
-    input[type="text"] {
-      margin-top: 0.5em;
-      font-size: 1.4rem;
-    }
-    input.enode { width: 100%; }
-    input.amount { width: 100px; }
-    span { color: #999; }
-    input[type="submit"] {
-      font-size: 1.6rem;
-      height: 42px;
-      margin-bottom: 0;
-      margin-right: 1em;
-    }
-    small a { color: $link-color-dark; }
+}
+
+
+form.contract {
+  margin: 2.5em 0 2.5em 2em;
+  font-size: 1.8rem;
+  h2 {
+    color: $ethereum-blue;
+    font-size: 2.5rem;
   }
+  p {
+    margin-bottom: 0.5em;
+  }
+  input[type="text"] {
+    margin-top: 0.5em;
+    font-size: 1.4rem;
+  }
+  input.enode { width: 100%; }
+  input.amount { width: 100px; }
+  span { color: #999; }
+  input[type="submit"] {
+    font-size: 1.6rem;
+    height: 42px;
+    margin-bottom: 0;
+    margin-right: 1em;
+  }
+  small a { color: $link-color-dark; }
 }
 
 @media (max-width: 1000px) {
