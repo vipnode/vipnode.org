@@ -400,13 +400,9 @@ form .messages {
   }
 }
 
-#get-started {
-  color: #0C2643;
-}
-
 
 form.contract {
-  margin: 2.5em 0 2.5em 2em;
+  margin: 2.5em 2em 2.5em 2em;
   font-size: 1.8rem;
   h2 {
     color: $ethereum-blue;
@@ -431,6 +427,12 @@ form.contract {
   small a { color: $link-color-dark; }
 }
 
+#get-started {
+  display: inline-block;
+  color: #0C2643;
+  background-color: #fff;
+}
+
 @media (max-width: 1000px) {
   .index-form {
     background: none;
@@ -442,7 +444,6 @@ form.contract {
   #get-started {
     width: 100%;
     float: none;
-    background-color: #fff;
     width: 97.6vw;
     margin-left:-9.5%;
     padding-right: 2em;
