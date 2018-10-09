@@ -198,9 +198,26 @@ input {
   .bumped-in { width: auto; }
 }
 
-form .messages {
+ul.messages {
+    list-style: none;
+    padding: 0;
+
+    li, p {
+      padding: 5px;
+    }
+}
+.messages {
+  .info {
+    background: #eeeeee;
+  }
+  .warning {
+    background: #ffed84;
+  }
   .error {
-    color: $error;
+    background: #ff9c84;
+  }
+  .success {
+    background: #84ff97;
   }
 }
 
@@ -401,7 +418,7 @@ form .messages {
 }
 
 
-form.contract {
+.contract {
   margin: 2.5em 2em 2.5em 2em;
   font-size: 1.8rem;
   h2 {
