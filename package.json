@@ -4,7 +4,7 @@
   "description": "Economic incentive for running Ethereum full nodes.",
   "dependencies": {
     "node-sass": "^4.9.3",
-    "nuxt": "^1.4.2",
+    "nuxt": "^2",
     "sass-loader": "^7.1.0"
   },
   "devDependencies": {},
