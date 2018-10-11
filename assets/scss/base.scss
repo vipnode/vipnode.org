@@ -6,7 +6,11 @@ $ethereum-blue:    #4A90E2 !default;
 $background:       #0C2643 !default;
 $link-color:       #79E4F0 !default;
 $link-color-dark:  #2B97A3 !default;
-$error:            #ea5216 !default;
+
+$error-color: #ff9c84;
+$warning-color: #ffed84;
+$info-color: #eeeeee;
+$success-color: #84ff97;
 
 $monospace:        'PT Mono', monospace;
 $sans-serif:       'PT Sans', sans-serif;
@@ -207,17 +211,29 @@ ul.messages {
     }
 }
 .messages {
+  color: rgba(0, 0, 0, 0.5);
+  p, li {
+    padding: 0.2em 0.5em;
+    border-radius: 5px;
+  }
+  a {
+    color: rgba(30, 30, 30, 0.6);
+    text-decoration: underline;
+  }
   .info {
-    background: #eeeeee;
+    background: $info-color;
   }
   .warning {
-    background: #ffed84;
+    background: $warning-color;
   }
   .error {
-    background: #ff9c84;
+    background: $error-color;
   }
   .success {
-    background: #84ff97;
+    &::before {
+      content: "👍";
+    }
+    background: $success-color;
   }
 }
 

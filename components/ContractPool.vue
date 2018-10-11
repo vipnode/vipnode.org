@@ -1,18 +1,32 @@
 <template>
   <div class="contract">
-    <h2>Balance to pool.vipnode.org</h2>
+    <h2>
+      Balance to pool.vipnode.org
+      <button class="button-primary" :disabled="loading" v-on:click="load">Reload Account Status</button>
+    </h2>
     <ul class="messages" v-if="messages.length > 0">
       <li v-for="msg in messages" :class="msg.kind">{{msg.body}}</li>
     </ul>
-    <form v-on:submit='submit' v-on:submit.prevent class="contract">
-      <div v-if="active == null">
-        <input type="submit" value="Load Account Status" :disabled="loading" class="button-primary"/>
-      </div>
-      <ul v-else>
-        <li>Account: {{active.account}}</li>
-        <li>Balance: {{active.balance.toString()}}</li>
-      </ul>
-    </form>
+    <ul v-if="active">
+      <li>Network: <strong>{{networkName}}</strong></li>
+      <li>Account:
+        <select v-model="active.account">
+          <option v-for="a in accounts" :value="a">{{a}}</option>
+        </select>
+      </li>
+      <li>
+        Balance: <span class="eth">{{fromWei(active.balance, 'ether')}} ETH</span>
+        <button v-if="active.balance > 0" :disabled="loading" v-on:click="requestWithdraw">Request Withdraw</button>
+      </li>
+    </ul>
+    <div v-if="active">
+      <input type="text" v-model="amount" value="0.2" placeholder="0.2" name="amount" class="amount"/><span> in ETH</span> <button :disabled="loading" v-on:click="addBalance">Add Balance</button>
+    </div>
+    <div class="messages" v-if="pendingTx">
+      <p class="success">
+        Transaction submitted. It can take a few minutes. <a :href="'https://etherscan.io/tx/' + pendingTx" target="_blank">Watch it here.</a>
+      </p>
+    </div>
   </div>
 </template>
 
@@ -32,12 +46,9 @@ export default {
   data() {
     return {
       loading: false,
-      enode: '',
+      pendingTx: false,
       amount: '0.02',
       messages: [],
-      pendingTx: '',
-      enodetooltip: false,
-      amounttooltip: false,
       accounts: [],
       active: null,
       networkID: "4",
@@ -45,13 +56,15 @@ export default {
     }
   },
   methods: {
-    submit() {
+    fromWei(n) {
+      return web3.fromWei(n, 'ether').toString();
+    },
+    load() {
       this.messages = [];
       this.loading = true;
 
       try {
         this.loadStatus(this.getContract(), function() {
-          this.success('👍');
         }.bind(this));
       } catch(e) {
         this.error('Unexpected error occurred. Check console for more details.', e);
@@ -59,6 +72,24 @@ export default {
         this.loading = false;
       }
       return false; // Prevent submit
+    },
+    requestWithdraw() {
+      this.error("request withdraw: not implemented yet");
+    },
+    addBalance() {
+      const weiAmount = web3.toWei(this.amount, 'ether');
+      const contract = this.getContract();
+      if (!contract) return;
+
+      contract.addBalance.sendTransaction({value: weiAmount}, function(err, res) {
+        if (err) {
+          if (err.message && err.message.indexOf('User denied transaction signature.') !== -1)  {
+            return this.warning('Transaction aborted. Try again?')
+          }
+          return this.error('Smart contract transaction failed.', err);
+        }
+        this.pendingTx = res;
+      }.bind(this));
     },
     error(msg, exc) {
       this.messages.push({body: msg, kind: 'error'});
@@ -111,7 +142,8 @@ export default {
               return this.error('Failed to load client balance.', err);
             }
 
-            this.active.balance = res;
+            this.active.balance = res[0];
+            this.active.timelocked = res[1];
           }.bind(this));
 
           // So deep.
@@ -119,6 +151,9 @@ export default {
         }.bind(this));
       }.bind(this));
     },
+  },
+  mounted() {
+    this.load();
   },
   components: { Tooltip },
 }
