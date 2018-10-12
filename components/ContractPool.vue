@@ -7,26 +7,37 @@
     <ul class="messages" v-if="messages.length > 0">
       <li v-for="msg in messages" :class="msg.kind">{{msg.body}}</li>
     </ul>
-    <ul v-if="active">
-      <li>Network: <strong>{{networkName}}</strong></li>
-      <li>Account:
+
+    <div v-if="active">
+      <p>Network: <strong>{{networkName}}</strong></p>
+      <p>Account:
         <select v-model="active.account">
           <option v-for="a in accounts" :value="a">{{a}}</option>
         </select>
-      </li>
-      <li>
-        Balance: <span class="eth">{{fromWei(active.balance, 'ether')}} ETH</span>
-        <button v-if="active.balance > 0" :disabled="loading" v-on:click="requestWithdraw">Request Withdraw</button>
-      </li>
-    </ul>
-    <div v-if="active">
-      <input type="text" v-model="amount" value="0.2" placeholder="0.2" name="amount" class="amount"/><span> in ETH</span> <button :disabled="loading" v-on:click="addBalance">Add Balance</button>
+      </p>
+
+      <form v-on:submit='whitelist' v-on:submit.prevent class="row">
+        <input type="text" v-model="enode" value="" placeholder="enode://..." name="enode" class="enode"/>
+        <input type="submit" :disabled="loading" value="Add Node" />
+      </form>
+
+      <p>
+        <div class="balance">Balance: <span class="eth">{{fromWei(active.balance, 'ether')}} ETH</span></div>
+        <button v-if="active.balance > 0" :disabled="loading" v-on:click="requestWithdraw" style="width: 172px;">Request Withdraw</button>
+      </p>
+
+      <form v-on:submit='addBalance' v-on:submit.prevent class="row">
+        <label class="eth"><input type="text" v-model="amount" value="0.2" placeholder="0.2" name="amount" class="amount"/></label>
+        <input type="submit" :disabled="loading" value="Add Balance" />
+      </form>
     </div>
+
     <div class="messages" v-if="pendingTx">
       <p class="success">
         Transaction submitted. It can take a few minutes. <a :href="'https://etherscan.io/tx/' + pendingTx" target="_blank">Watch it here.</a>
       </p>
     </div>
+
   </div>
 </template>
 
@@ -48,6 +59,7 @@ export default {
       loading: false,
       pendingTx: false,
       amount: '0.02',
+      enode: '',
       messages: [],
       accounts: [],
       active: null,
@@ -72,6 +84,22 @@ export default {
         this.loading = false;
       }
       return false; // Prevent submit
+    },
+    whitelist() {
+      const enodeParts = this.enode.match(reNodeID);
+      if (!enodeParts || enodeParts.length !== 1) {
+        return this.error('Invalid enodeID: Should be 128 hex characters.')
+      }
+      const cleanEnode = enodeParts[0];
+
+      const msg = {
+        account: this.active.account,
+        authorized: cleanEnode,
+        timestamp: +new Date(),
+      }
+      web3.eth.sign(this.active.account, JSON.stringify(msg), function (err, result) {
+        console.log(err, result);
+      });
     },
     requestWithdraw() {
       this.error("request withdraw: not implemented yet");
@@ -154,6 +182,7 @@ export default {
   },
   mounted() {
     this.load();
+    this.enode = this.$route.query.enode;
   },
   components: { Tooltip },
 }
