@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Economic incentive for running Ethereum full nodes.",
   "dependencies": {
+    "ethers": "^4.0.5",
     "node-sass": "^4.9.3",
     "nuxt": "^2",
     "sass-loader": "^7.1.0"
