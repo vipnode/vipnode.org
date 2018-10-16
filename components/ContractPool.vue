@@ -92,16 +92,24 @@ export default {
         return this.error('Invalid enodeID: Should be 128 hex characters.')
       }
       const cleanEnode = enodeParts[0];
-      const msg = {
-        account: this.active.account,
-        authorizeNode: cleanEnode,
-        timestamp: +new Date(),
-      }
+      const method = "pool_addNode";
+      const params = [
+        this.active.account, // Wallet
+        +new Date(), // Nonce
+        cleanEnode, // NodeID
+      ]
       const signer = this.provider.getSigner(this.active.account);
       try {
-        const signedMsg = await signer.signMessage(JSON.stringify(msg));
-        console.log(signedMsg);
-        // XXX: JSONRPC to pool whitelist
+        const msg = method + JSON.stringify(params);
+        const signedParams = await signer.signMessage(msg);
+        console.log(JSON.stringify({
+          "id": 1,
+          "method": method,
+          "params": [
+            signedParams,
+            ...params,
+          ],
+        }));
       } catch(err) {
         return this.error('Failed to sign message.', err);
       }
