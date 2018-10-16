@@ -7,7 +7,7 @@
             <img src="~/static/img/vipnode.png" alt="vipnode" id="vipnode-logo"/>
           </a>
         </h1>
-        <h2>Economic incentive for running Ethereum nodes.</h2>
+        <h2 class="hidden-md-down">Economic incentive for running Ethereum nodes.</h2>
       </div>
       <nav class="seven columns">
         <ul>

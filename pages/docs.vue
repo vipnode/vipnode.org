@@ -13,5 +13,10 @@ import Newsletter from "~/components/Newsletter.vue"
 
 export default {
   components: { Sponsors, Newsletter },
+  head() {
+    return {
+      title: "Documentation · Vipnode",
+    }
+  }
 }
 </script>
