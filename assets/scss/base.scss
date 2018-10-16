@@ -419,7 +419,7 @@ ul.messages {
 
 /* INDEX */
 .index-form {
-  background: url('~/static/img/form-bg.png') top center repeat-y;
+  background: url('~/img/form-bg.png') top center repeat-y;
   padding-left: 12.5%;
   padding-right: 12.5%;
   margin-top: -1em;
@@ -435,17 +435,17 @@ ul.messages {
 }
 
 #intro {
+  padding-right: 3em;
   h2 {
     font-size: 3rem;
     margin-top: 1.5em;
   }
-  p { padding-right: 1em; }
 }
 
 @media (max-width: 850px) {
   #intro {
+    padding-right: 0;
     margin-bottom: 2em;
-    p { padding-right: 0; }
     h2 { margin-top: 0; }
   }
 }
