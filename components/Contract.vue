@@ -26,16 +26,13 @@
     </label>
     <p>
       <input type="submit" value="Execute Smart Contract" :disabled="loading" class="button-primary"/>
-      <small>(requires <a href="https://metamask.io/" target="_blank">a web3-enabled browser</a>)</small>
+      <small>Requires <a href="https://metamask.io/" target="_blank">a web3-enabled browser</a>. <br/>Once your node is registered, <a href="/faq#connect">follow the connection instructions</a>.</small>
     </p>
     <div class="messages" v-if="pendingTx">
       <p class="success">
         Transaction submitted. It can take a few minutes. <a :href="'https://etherscan.io/tx/' + pendingTx" target="_blank">Watch it here.</a>
       </p>
     </div>
-    <p>
-      Once your node is registered, <a href="/faq#connect">follow the connection instructions</a>.
-    </p>
   </form>
 </template>
 

@@ -498,8 +498,10 @@ label.eth {
   input[type="submit"] {
     font-size: 1.6rem;
     line-height: 1.8rem;
+    margin-bottom: 0;
   }
-  small a { color: $link-color-dark; }
+  small { display: block; margin-top: 1em;}
+  a { color: $link-color-dark; }
 
   .row {
     display: flex;
