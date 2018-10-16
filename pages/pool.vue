@@ -17,5 +17,10 @@ import Tooltip from "~/components/Tooltip.vue"
 
 export default {
   components: { ContractPool, Tooltip },
+  head() {
+    return {
+      title: "Pool · Vipnode",
+    }
+  }
 }
 </script>
