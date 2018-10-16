@@ -24,7 +24,10 @@ body {
 }
 
 @media (max-width: 400px) {
-  body { overflow-x: hidden; }
+  body {
+    overflow-x: hidden;
+    font-size: 1.5em;
+  }
 }
 
 h1, h2 { font-family: $monospace; }
@@ -37,7 +40,7 @@ a {
 }
 
 // Override skeleton
-p { 
+p {
   margin: 0.25em 0 0.5em 0;
 }
 button {
@@ -103,8 +106,6 @@ input {
 .text-center {
   text-align: center;
 }
-
-
 
 .tooltip {
   position: relative;
@@ -316,16 +317,18 @@ ul.messages {
     ul {
       text-align: left;
       margin-top: 0;
+      margin-bottom: 0;
       li {
         padding-left: 0;
         padding-right: 2em;
         margin-left: 0;
-        font-size: 1.6rem;
+        font-size: 1.3rem;
         .button-primary {
           height: 30px;
           line-height: 30px;
           padding: 0 15px;
           margin-left: -15px;
+          font-size: 1.3rem;
         }
       }
     }
@@ -333,10 +336,15 @@ ul.messages {
 }
 
 @media (max-width: 400px) {
-  .nav nav ul li {
-    padding-right: 1em;
-    .button-primary {
-      margin-left: 0;
+  .nav {
+    #logo-container {
+      left: -15px;
+    }
+    nav ul li {
+      padding-right: 1em;
+      .button-primary {
+        margin-left: 0;
+      }
     }
   }
 }
@@ -344,6 +352,12 @@ ul.messages {
 /* CONTENT */
 .container article {
   margin-top: 3em;
+}
+
+@media (max-width: 400px) {
+  .container article {
+    margin-top: 2em;
+  }
 }
 
 /* FOOTER */
@@ -429,15 +443,18 @@ ul.messages {
 }
 
 @media (max-width: 850px) {
-  .index-form {
-    margin-top: 1em;
+  #intro {
+    margin-bottom: 2em;
+    p { padding-right: 0; }
+    h2 { margin-top: 0; }
   }
-  #intro h2 { margin-top: 0; }
 }
 
 @media (max-width: 400px) {
-  #intro h2 {
-    font-size: 2.5rem;
+  #intro {
+    h2 {
+      font-size: 2.0rem;
+    }
   }
 }
 
