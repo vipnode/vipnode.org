@@ -10,7 +10,7 @@ module.exports = {
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { property: 'og:type', content: 'website' },
-      { property:'og:image', name: 'twitter:image', content: 'img/preview-card.png'},
+      { property:'og:image', name: 'twitter:image', content: 'https://vipnode.org/img/preview-card.png'},
       { name: 'twitter:card', content: 'summary_large_image'}
     ],
     link: [
