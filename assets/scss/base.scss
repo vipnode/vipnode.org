@@ -598,6 +598,10 @@ label.eth {
   }
 }
 
+@media (min-width: 1000px) {
+  #features { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+}
+
 @media (max-width: 400px) {
   #features {
     margin-top: 3em;
