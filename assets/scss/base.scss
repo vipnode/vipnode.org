@@ -514,19 +514,46 @@ label.eth {
 }
 
 @media (max-width: 1000px) {
-  .index-form {
-    background: none;
-  }
   #intro {
     width: 100%;
     float: none;
+    margin-bottom: 2em;
   }
-  #get-started {
-    width: 100%;
-    float: none;
-    width: 97.6vw;
-    margin-left:-9.5%;
-    padding-right: 2em;
+  .index-form {
+    background: none;
+    #get-started {
+      float: none;
+      width: 100vw;
+      margin-left: -12.5%;
+      .contract {
+        margin-left: 10%;
+        margin-right: 10%;
+      }
+    }
+  }
+}
+
+@media (max-width: 550px) {
+  .index-form {
+    #get-started {
+      margin-left: -8.8%;
+      .contract {
+        margin-left: 6.25%;
+        margin-right: 6.25%;
+      }
+    }
+  }
+}
+
+@media (max-width: 400px) {
+  .index-form {
+    #get-started {
+      margin-left: -20px;
+      .contract {
+        margin-left: 20px;
+        margin-right: 20px;
+      }
+    }
   }
 }
 
