@@ -376,6 +376,7 @@ ul.messages {
     a.button {
       margin-left: -15px;
       margin-bottom: 5px;
+      font-size: 12px;
     }
   }
   .footer-newsletter {
@@ -397,6 +398,7 @@ ul.messages {
         padding-left: 15px;
         padding-right: 15px;
         margin-left: 10px;
+        font-size: 12px;
       }
     }
   }
@@ -436,6 +438,7 @@ ul.messages {
 
 #intro {
   padding-right: 3em;
+  p { margin-bottom: 1.5em; }
   h2 {
     font-size: 3rem;
     margin-top: 1.5em;
@@ -492,7 +495,7 @@ label.eth {
     line-height: 1.8rem;
   }
   input[type="text"] {
-    margin-right: 1em;
+    margin-right: 0.2em;
   }
   span { color: #999; }
   input[type="submit"] {
