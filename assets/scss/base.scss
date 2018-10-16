@@ -109,7 +109,7 @@ input {
 
 .tooltip {
   position: relative;
-  background: url(~/static/img/tooltip.png) top left no-repeat;
+  background: url(~/img/tooltip.png) top left no-repeat;
   width: 15px;
   height: 15px;
   display: inline-block;
@@ -138,6 +138,7 @@ input {
       color: #444;
       background-color: transparent;
       padding: 0;
+      margin: 0;
       border: 0;
     }
     .button-primary {
@@ -162,6 +163,10 @@ input {
       border-style:solid;
       border-color:#fff transparent;
     }
+  }
+
+  @media (max-width: 600px) {
+      .tooltip-body code { white-space: normal; }
   }
 
   @media (max-width: 400px) {
