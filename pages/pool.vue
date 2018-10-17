@@ -19,7 +19,7 @@ export default {
   components: { ContractPool, Tooltip },
   head() {
     return {
-      title: "Pool · Vipnode",
+      title: "Pool",
     }
   }
 }

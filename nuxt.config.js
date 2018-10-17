@@ -6,6 +6,7 @@ module.exports = {
     '@/assets/scss/base.scss'
   ],
   head: {
+    titleTemplate: '%s · Vipnode',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },

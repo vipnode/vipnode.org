@@ -15,7 +15,7 @@ export default {
   components: { Sponsors, Newsletter },
   head() {
     return {
-      title: "Press · Vipnode",
+      title: "Press",
     }
   }
 }
