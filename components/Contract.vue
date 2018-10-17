@@ -1,6 +1,6 @@
 <template>
   <form v-on:submit='submit' v-on:submit.prevent class="contract">
-    <h2>Try the Vipnode v1 MVP and become a VIP!</h2>
+    <h2>Try the Vipnode v1 MVP <br/>and become a VIP!</h2>
     <ul class="messages" v-if="messages.length > 0">
       <li v-for="msg in messages" :class="msg.kind">{{msg.body}}</li>
     </ul>
