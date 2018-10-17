@@ -523,6 +523,10 @@ label.eth {
   background-color: #fff;
 }
 
+@media (min-width: 1000px) and (max-width: 1650px  ) {
+  .contract h2 { max-width: 350px; }
+}
+
 @media (max-width: 1000px) {
   #intro {
     width: 100%;
