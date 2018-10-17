@@ -251,6 +251,17 @@ ul.messages {
   }
 }
 
+.input-text { // override if skeleton is being weird
+  height: 38px;
+  padding: 6px 10px; /* The 6px vertically centers text on FF, ignored by Webkit */
+  background-color: #fff;
+  color: #0C2643;
+  border: 1px solid #4A90E2;
+  border-radius: 4px;
+  box-shadow: none;
+  box-sizing: border-box;
+}
+
 /* HEADER */
 .nav {
   margin-top: 1em;
@@ -395,8 +406,6 @@ ul.messages {
       input {
         height: 32px;
         line-height: 32px;
-      }
-      input[type="text"] {
         width: 250px;
       }
       input[type="submit"] {
@@ -404,6 +413,7 @@ ul.messages {
         padding-right: 15px;
         margin-left: 10px;
         font-size: 12px;
+        width: auto;
       }
     }
   }
