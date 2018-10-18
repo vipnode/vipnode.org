@@ -290,11 +290,11 @@ ul.messages {
   ul {
     list-style: none;
     text-align: right;
-    margin-top: 2.5em;
+    margin-top: 2.0em;
     li {
       display: inline-block;
       font-weight: bold;
-      padding: 0 0 0 3em;
+      padding: 0 0 0 2em;
       margin-left: 1em;
       font-size: 1.6rem;
       a {
@@ -499,7 +499,7 @@ label.eth {
 }
 
 .contract {
-  margin: 2.5em 0 2.5em 2em;
+  margin: 2.5em 2em 2.5em 2em;
   font-size: 1.8rem;
   h2 {
     color: $ethereum-blue;
@@ -531,6 +531,10 @@ label.eth {
   display: inline-block;
   color: #0C2643;
   background-color: #fff;
+}
+
+.index-form .contract {
+  margin-right: 0;
 }
 
 @media (min-width: 1000px) and (max-width: 1650px  ) {
