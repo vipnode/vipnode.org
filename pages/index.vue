@@ -76,7 +76,7 @@ export default {
   components: { Contract, Sponsors, Newsletter },
   head() {
     return {
-      title: "Vipnode · Economic incentive for Ethereum full nodes",
+      title: "Economic incentive for Ethereum full nodes",
       meta: [
         { name: 'twitter:card', content: 'summary' },
         { propery: 'og:url', content: 'https://vipnode.org/' },

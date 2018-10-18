@@ -6,6 +6,7 @@ module.exports = {
     '@/assets/scss/base.scss'
   ],
   head: {
+    titleTemplate: '%s · Vipnode',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -14,7 +15,7 @@ module.exports = {
       { name: 'twitter:card', content: 'summary_large_image'}
     ],
     link: [
-      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=PT+Mono|PT+Sans' },
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=PT+Mono|PT+Sans:400,700' },
       { rel: 'shortcut icon', href: 'img/icon-32px.png' }
     ]
   }

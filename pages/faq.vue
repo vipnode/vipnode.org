@@ -82,7 +82,7 @@ export default {
   components: { Sponsors, Newsletter },
   head() {
     return {
-      title: "FAQ · Vipnode",
+      title: "FAQ",
     }
   }
 }

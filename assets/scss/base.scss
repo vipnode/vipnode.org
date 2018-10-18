@@ -251,6 +251,17 @@ ul.messages {
   }
 }
 
+.input-text { // override if skeleton is being weird
+  height: 38px;
+  padding: 6px 10px; /* The 6px vertically centers text on FF, ignored by Webkit */
+  background-color: #fff;
+  color: #0C2643;
+  border: 1px solid #4A90E2;
+  border-radius: 4px;
+  box-shadow: none;
+  box-sizing: border-box;
+}
+
 /* HEADER */
 .nav {
   margin-top: 1em;
@@ -279,11 +290,11 @@ ul.messages {
   ul {
     list-style: none;
     text-align: right;
-    margin-top: 2.5em;
+    margin-top: 2.0em;
     li {
       display: inline-block;
       font-weight: bold;
-      padding: 0 0 0 3em;
+      padding: 0 0 0 2em;
       margin-left: 1em;
       font-size: 1.6rem;
       a {
@@ -395,8 +406,6 @@ ul.messages {
       input {
         height: 32px;
         line-height: 32px;
-      }
-      input[type="text"] {
         width: 250px;
       }
       input[type="submit"] {
@@ -404,6 +413,7 @@ ul.messages {
         padding-right: 15px;
         margin-left: 10px;
         font-size: 12px;
+        width: auto;
       }
     }
   }
@@ -521,6 +531,14 @@ label.eth {
   display: inline-block;
   color: #0C2643;
   background-color: #fff;
+}
+
+.index-form .contract {
+  margin-right: 0;
+}
+
+@media (min-width: 1000px) and (max-width: 1650px  ) {
+  .contract h2 { max-width: 350px; }
 }
 
 @media (max-width: 1000px) {
