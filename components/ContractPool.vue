@@ -16,14 +16,23 @@
         </select>
       </p>
 
+      <div class="node-ids" v-if="nodeIDs">
+        <h4>Authorized Nodes:</h4>
+        <ul>
+          <li v-for="id in nodeIDs">{{id}}…</li>
+        </ul>
+      </div>
+
       <form v-on:submit='whitelist' v-on:submit.prevent class="row">
         <input type="text" v-model="enode" value="" placeholder="enode://..." name="enode" class="enode"/>
         <input type="submit" :disabled="loading" value="Add Node" />
       </form>
 
       <p>
-        <div class="balance">Balance: <span class="eth">{{formatEther(active.balance)}} ETH</span></div>
-        <button v-if="active.balance > 0" :disabled="loading" v-on:click="requestWithdraw" style="width: 172px;">Request Withdraw</button>
+        <div class="balance">Balance: <span class="eth">{{formatEther(balance.credit || "0")}} ETH</span></div>
+        <div class="deposit">Deposit: <span class="eth">{{formatEther(active.balance)}} ETH</span>
+          <button v-if="active.balance > 0" :disabled="loading" v-on:click="requestWithdraw" style="width: 172px;">Request Withdraw</button>
+        </div>
       </p>
 
       <form v-on:submit='addBalance' v-on:submit.prevent class="row">
@@ -54,6 +63,32 @@ function getContract(provider) {
   return new Contract(address, abi, provider);
 }
 
+const _poolRPCendpoint = "http://localhost:8080";
+let _rpcID = 1;
+
+async function poolRPC(method, params) {
+  const resp = await fetch(_poolRPCendpoint, {
+    method: 'POST',
+    cors: 'same-origin',
+    body: JSON.stringify({
+      "id": _rpcID++,
+      "method": method,
+      "params": params,
+    }),
+  });
+  const data = await resp.json();
+  if (data.error) {
+    throw new Error(data.error.message);
+  }
+  return data.result;
+}
+
+async function signedPoolRPC(signer, method, params) {
+  const msg = method + JSON.stringify(params);
+  const signedParams = await signer.signMessage(msg);
+  return poolRPC(method, [signedParams, ...params]);
+}
+
 export default {
   data() {
     return {
@@ -63,7 +98,9 @@ export default {
       enode: '',
       messages: [],
       accounts: [],
+      nodeIDs: [],
       active: null,
+      balance: {},
       networkID: "4",
       networkName: "Rinkeby",
     }
@@ -77,8 +114,9 @@ export default {
       this.messages = [];
       this.loading = true;
 
-        await this.loadStatus(this.getContract());
       try {
+        await this.loadContractStatus(this.getContract());
+        await this.loadPoolStatus();
       } catch(e) {
         this.error('Unexpected error occurred. Check console for more details.', e);
       } finally {
@@ -97,23 +135,17 @@ export default {
         this.active.account, // Wallet
         +new Date(), // Nonce
         cleanEnode, // NodeID
-      ]
+      ];
       const signer = this.provider.getSigner(this.active.account);
       try {
-        const msg = method + JSON.stringify(params);
-        const signedParams = await signer.signMessage(msg);
-        console.log(JSON.stringify({
-          "id": 1,
-          "method": method,
-          "params": [
-            signedParams,
-            ...params,
-          ],
-        }));
+        await signedPoolRPC(signer, method, params)
       } catch(err) {
-        return this.error('Failed to sign message.', err);
+        // TODO: Handle specific errors
+        return this.error('Failed to authorize node.', err);
       }
 
+      this.success("Authorized node.");
+      await this.loadPoolStatus();
     },
     requestWithdraw() {
       this.error("request withdraw: not implemented yet");
@@ -157,7 +189,7 @@ export default {
         return;
       }
     },
-    async loadStatus(contract) {
+    async loadContractStatus(contract) {
       if (!contract) return;
       if (web3 === undefined) {
         return this.error("Please use a web3-enabled browser to execute this smart contract.");
@@ -178,15 +210,22 @@ export default {
         balance: 0,
       };
 
-      let client;
       try {
-        client = await contract.clients(this.active.account)
+        const client = await contract.clients(this.active.account)
+        this.active.balance = client[0];
+        this.active.timelocked = client[1];
       }catch (err) {
         return this.error('Failed to load client balance.', err);
       }
-
-      this.active.balance = client[0];
-      this.active.timelocked = client[1];
+    },
+    async loadPoolStatus() {
+      try {
+        const r = await poolRPC("pool_status", [this.active.account]);
+        this.balance = r.balance;
+        this.nodeIDs = r.node_short_ids;
+      } catch (err) {
+        return this.error('Failed to load pool status.', err);
+      }
     },
   },
   mounted() {
