@@ -1,43 +1,55 @@
 <template>
-  <div class="contract">
-    <h2>
-      Balance to pool.vipnode.org
-      <button class="button-primary" :disabled="loading" v-on:click="load">Reload Account Status</button>
-    </h2>
-    <ul class="messages" v-if="messages.length > 0">
-      <li v-for="msg in messages" :class="msg.kind">{{msg.body}}</li>
-    </ul>
+  <div id="contract-pool">
+    <h2>Balance for <span class="hl1">pool.vipnode.org</span></h2>
+    <button class="button button-small" :disabled="loading" v-on:click="load">Reload Account Status</button>
+    <p>This feature is experimental. Don't use any money you're not willing to donate.</p>
+    <div class="full-width white-background">
+      <div class="contract">
+        <ul class="messages" v-if="messages.length > 0">
+          <li v-for="msg in messages" :class="msg.kind">{{msg.body}}</li>
+        </ul>
 
-    <div v-if="active">
-      <p>Network: <strong>{{networkName}}</strong></p>
-      <p>Account:
-        <select v-model="active.account">
-          <option v-for="a in accounts" :value="a">{{a}}</option>
-        </select>
-      </p>
+        <h3>Current network</h3>
+        <div v-if="active">
+          <p>Network: <strong>{{networkName}}</strong></p>
+          <p>Account:
+            <select v-model="active.account">
+              <option v-for="a in accounts" :value="a">{{a}}</option>
+            </select>
+          </p>
 
-      <form v-on:submit='whitelist' v-on:submit.prevent class="row">
-        <input type="text" v-model="enode" value="" placeholder="enode://..." name="enode" class="enode"/>
-        <input type="submit" :disabled="loading" value="Add Node" />
-      </form>
+          <div class="row">
+            <div class="four columns balance-form">
+              <h3>Balance</h3>
+              <p>
+                <div class="balance">Balance: <span class="eth">{{formatEther(active.balance)}} ETH</span></div>
+                <button v-if="active.balance > 0" :disabled="loading" v-on:click="requestWithdraw" style="width: 172px;">Request Withdraw</button>
+              </p>
+              <form v-on:submit='addBalance' v-on:submit.prevent class="row">
+                <label class="eth"><input type="text" v-model="amount" value="0.2" placeholder="0.2" name="amount" class="amount"/></label>
+                <input type="submit" :disabled="loading" value="Add Balance" class="button-primary"/>
+              </form>
+              <p><small>0.2 ETH is approximately one week’s usage under normal conditions.</small></p>
+            </div>
 
-      <p>
-        <div class="balance">Balance: <span class="eth">{{formatEther(active.balance)}} ETH</span></div>
-        <button v-if="active.balance > 0" :disabled="loading" v-on:click="requestWithdraw" style="width: 172px;">Request Withdraw</button>
-      </p>
+            <div class="eight columns">
+              <h3>Current nodes</h3>
+              <form v-on:submit='whitelist' v-on:submit.prevent class="row">
+                <input type="text" v-model="enode" value="" placeholder="enode://..." name="enode" class="enode"/>
+                <input type="submit" :disabled="loading" value="Add Node" class="button-primary"/>
+              </form>
+            </div>
+          </div>
+        </div>
 
-      <form v-on:submit='addBalance' v-on:submit.prevent class="row">
-        <label class="eth"><input type="text" v-model="amount" value="0.2" placeholder="0.2" name="amount" class="amount"/></label>
-        <input type="submit" :disabled="loading" value="Add Balance" />
-      </form>
+        <div class="messages" v-if="pendingTx">
+          <p class="success">
+            Transaction submitted. It can take a few minutes. <a :href="txURL(pendingTx)" target="_blank">Watch it here.</a>
+          </p>
+        </div>
+
+      </div>
     </div>
-
-    <div class="messages" v-if="pendingTx">
-      <p class="success">
-        Transaction submitted. It can take a few minutes. <a :href="txURL(pendingTx)" target="_blank">Watch it here.</a>
-      </p>
-    </div>
-
   </div>
 </template>
 
