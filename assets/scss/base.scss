@@ -108,6 +108,15 @@ input {
   padding-right: 12.5%;
 }
 
+@media (max-width: 400px) {
+  .full-width {
+    margin-left: -20px;
+    margin-right: -20px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
 .text-center {
   text-align: center;
 }
@@ -799,12 +808,17 @@ ul.messages {
   .contract {
     padding: 2em 0;
     margin-top: 2em;
+    select { max-width: 100%; }
     .balance-form {
       margin-bottom: 2em;
       form, input { margin-bottom: 0; }
       small { margin-top: 0; }
     }
   }
+}
+
+@media (max-width: 1000px) {
+  #contract-pool .button { margin: 1em 0; }
 }
 
 input.enode { width: 100%; }
