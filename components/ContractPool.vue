@@ -5,10 +5,6 @@
     <p>This feature is experimental. Don't use any money you're not willing to donate.</p>
     <div class="full-width white-background">
       <div class="contract">
-        <h2>
-          Balance to pool.vipnode.org
-          <button class="button-primary" :disabled="loading" v-on:click="load">Reload Account Status</button>
-        </h2>
         <ul class="messages" v-if="messages.length > 0">
           <li v-for="msg in messages" :class="msg.kind">{{msg.body}}</li>
         </ul>
@@ -23,6 +19,7 @@
           </p>
 
           <div class="balance-form">
+            <h3>Balance</h3>
             <p>
               <div class="balance">Balance: <span class="eth">{{formatEther(balance.credit || "0")}} ETH</span></div>
               <div class="deposit">Deposit: <span class="eth">{{formatEther(active.balance)}} ETH</span>
@@ -32,12 +29,12 @@
 
             <form v-on:submit='addBalance' v-on:submit.prevent class="row">
               <label class="eth"><input type="text" v-model="amount" value="0.2" placeholder="0.2" name="amount" class="amount"/></label>
-              <input type="submit" :disabled="loading" value="Add Balance" />
+              <input type="submit" :disabled="loading" value="Add Balance" class="button-primary"/>
             </form>
           </div>
 
           <div class="node-ids" v-if="nodeIDs">
-            <h4>Authorized Nodes:</h4>
+            <h3>Authorized Nodes:</h3>
             <ul>
               <li v-for="id in nodeIDs">{{id}}…</li>
             </ul>
@@ -45,7 +42,7 @@
 
           <form v-on:submit='whitelist' v-on:submit.prevent class="row">
             <input type="text" v-model="enode" value="" placeholder="enode://..." name="enode" class="enode"/>
-            <input type="submit" :disabled="loading" value="Add Node" />
+            <input type="submit" :disabled="loading" value="Add Node" class="button-primary"/>
           </form>
         </div>
       </div>
