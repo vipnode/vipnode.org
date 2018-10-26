@@ -51,6 +51,7 @@ button {
 .hl1, .hl2 { font-weight: bold; }
 .hl1 { color: $highlight; }
 .hl2 { color: $ethereum-blue; }
+.grey { color: rgba(0, 0, 0, 0.5); }
 
 code, pre { font-family: $monospace; }
 
@@ -817,7 +818,7 @@ label.eth {
   }
 
   &::after {
-    color: rgba(0, 0, 0, 0.5);
+    @extend .grey;
     margin-left: -3.5em;
     content: "ETH";
   }
@@ -827,3 +828,5 @@ label.eth {
   margin-right: 1rem;
   width: 180px;
 }
+
+.node-ids li { margin-bottom: 0; }

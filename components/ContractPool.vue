@@ -9,8 +9,8 @@
           <li v-for="msg in messages" :class="msg.kind">{{msg.body}}</li>
         </ul>
 
-        <h3>Current network</h3>
         <div v-if="active">
+          <h3>Current network</h3>
           <p>Network: <strong>{{networkName}}</strong></p>
           <p>Account:
             <select v-model="active.account">
