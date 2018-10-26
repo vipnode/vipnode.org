@@ -1,5 +1,5 @@
 build: deps
-	./node_modules/.bin/nuxt generate
+	NODE_ENV=production ./node_modules/.bin/nuxt generate
 
 deps: .node_modules
 
