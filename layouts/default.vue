@@ -74,7 +74,7 @@
                 onsubmit="window.open('https://tinyletter.com/vipnode', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
             <input type="text" class="input-text" name="email" id="tlemail" placeholder="satoshin@gmx.com" />
             <input type="hidden" value="1" name="embed" />
-            <input type="submit" value="Subscribe" class="button-primary" />
+            <input type="submit" value="Subscribe" class="button-primary button-small" />
           </form>
           <p>Made with 🍁 in Toronto, Canada</p>
         </div>

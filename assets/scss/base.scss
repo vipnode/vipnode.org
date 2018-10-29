@@ -32,6 +32,7 @@ body {
 
 h1, h2 { font-family: $monospace; }
 h3, h4, h5, h6 { font-family: $sans-serif; }
+h3 { color: $ethereum-blue; }
 
 a {
   color: $link-color;
@@ -50,6 +51,7 @@ button {
 .hl1, .hl2 { font-weight: bold; }
 .hl1 { color: $highlight; }
 .hl2 { color: $ethereum-blue; }
+.grey { color: rgba(0, 0, 0, 0.5); }
 
 code, pre { font-family: $monospace; }
 
@@ -67,8 +69,8 @@ input {
 }
 
 .button, input[type="submit"] {
-  background-color: lighten($background, 3%);
-  border-color: lighten($background, 3%);
+  background-color: lighten($background, 5%);
+  border-color: lighten($background, 5%);
   color: $link-color;
   transition: 0.2s;
   &:hover {
@@ -87,10 +89,11 @@ input {
   }
 }
 
-.button-small {
+.button-small, input[type="submit"].button-small {
   height: 30px;
   line-height: 30px;
   padding: 0 15px;
+  font-size: 12px;
 }
 
 .all-caps {
@@ -101,11 +104,24 @@ input {
 .full-width {
   margin-left: -12.5%;
   margin-right: -12.5%;
+  padding-left: 12.5%;
+  padding-right: 12.5%;
+}
+
+@media (max-width: 400px) {
+  .full-width {
+    margin-left: -20px;
+    margin-right: -20px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
 }
 
 .text-center {
   text-align: center;
 }
+
+.white-background { background-color: #fff; }
 
 .tooltip {
   position: relative;
@@ -221,13 +237,12 @@ ul.messages {
     padding: 0;
 
     li, p {
-      padding: 5px;
+      padding: 0.4em 0.8em;
     }
 }
 .messages {
   color: rgba(0, 0, 0, 0.5);
   p, li {
-    padding: 0.2em 0.5em;
     border-radius: 5px;
   }
   a {
@@ -241,7 +256,9 @@ ul.messages {
     background: $warning-color;
   }
   .error {
-    background: $error-color;
+    background: lighten($error-color, 15%);
+    border: 1px solid $error-color;
+    color: darken($error-color, 15%);
   }
   .success {
     &::before {
@@ -260,6 +277,36 @@ ul.messages {
   border-radius: 4px;
   box-shadow: none;
   box-sizing: border-box;
+}
+
+.contract {
+  font-size: 1.8rem;
+  color: #0C2643;
+  background-color: #fff;
+  h2 {
+    color: $ethereum-blue;
+    font-size: 2.5rem;
+  }
+  input {
+    font-size: 1.4rem;
+    line-height: 1.8rem;
+  }
+  input[type="text"] {
+    margin-right: 0.2em;
+  }
+  span { color: #999; }
+  input[type="submit"] {
+    font-size: 1.6rem;
+    line-height: 1.8rem;
+    margin-bottom: 0;
+  }
+  small { display: block; margin-top: 1em;}
+  a { color: $link-color-dark; }
+
+  .row {
+    display: flex;
+    flex-flow: row;
+  }
 }
 
 /* HEADER */
@@ -392,7 +439,6 @@ ul.messages {
     a.button {
       margin-left: -15px;
       margin-bottom: 5px;
-      font-size: 12px;
     }
   }
   .footer-newsletter {
@@ -409,10 +455,7 @@ ul.messages {
         width: 250px;
       }
       input[type="submit"] {
-        padding-left: 15px;
-        padding-right: 15px;
         margin-left: 10px;
-        font-size: 12px;
         width: auto;
       }
     }
@@ -476,59 +519,10 @@ ul.messages {
   }
 }
 
-input.enode { width: 100%; }
-input.amount { width: 8em; }
-label.eth {
-  font-size: 1.4rem;
-
-  input {
-    padding-right: 3em;
-    width: 180px;
-  }
-
-  &::after {
-    color: rgba(0, 0, 0, 0.5);
-    margin-left: -3.5em;
-    content: "ETH";
-  }
-}
-.contract {
-  margin: 2.5em 2em 2.5em 2em;
-  font-size: 1.8rem;
-  h2 {
-    color: $ethereum-blue;
-    font-size: 2.5rem;
-  }
-  input {
-    font-size: 1.4rem;
-    line-height: 1.8rem;
-  }
-  input[type="text"] {
-    margin-right: 0.2em;
-  }
-  span { color: #999; }
-  input[type="submit"] {
-    font-size: 1.6rem;
-    line-height: 1.8rem;
-    margin-bottom: 0;
-  }
-  small { display: block; margin-top: 1em;}
-  a { color: $link-color-dark; }
-
-  .row {
-    display: flex;
-    flex-flow: row;
-  }
-}
-
-#get-started {
-  display: inline-block;
-  color: #0C2643;
-  background-color: #fff;
-}
-
 .index-form .contract {
   margin-right: 0;
+  display: inline-block;
+  margin: 2.5em 0 2.5em 2em;
 }
 
 @media (min-width: 1000px) and (max-width: 1650px  ) {
@@ -547,6 +541,7 @@ label.eth {
       float: none;
       width: 100vw;
       margin-left: -12.5%;
+      background-color: #fff;
       .contract {
         margin-left: 10%;
         margin-right: 10%;
@@ -602,6 +597,7 @@ label.eth {
     h3 {
       font-size: 2.5rem;
       margin-bottom: 0.2em;
+      color: #fff;
     }
     p {
       font-size: 1.6rem;
@@ -801,3 +797,50 @@ label.eth {
     }
   }
 }
+
+#contract-pool {
+  h2 {
+    display: inline-block;
+    margin: 0 1em 0 0;
+  }
+  h3 { margin-bottom: 1rem; }
+  .button { margin-bottom: 0; }
+  .contract {
+    padding: 2em 0;
+    margin-top: 2em;
+    select { max-width: 100%; }
+    .balance-form {
+      margin-bottom: 2em;
+      form, input { margin-bottom: 0; }
+      small { margin-top: 0; }
+    }
+  }
+}
+
+@media (max-width: 1000px) {
+  #contract-pool .button { margin: 1em 0; }
+}
+
+input.enode { width: 100%; }
+input.amount { width: 10em; }
+label.eth {
+  font-size: 1.4rem;
+
+  input {
+    padding-right: 3em;
+    //width: 180px;
+  }
+
+  &::after {
+    @extend .grey;
+    margin-left: -3.5em;
+    content: "ETH";
+  }
+}
+.balance {
+  display: inline-block;
+  margin-right: 1rem;
+  width: 180px;
+}
+
+.node-ids li { margin-bottom: 0; }

@@ -1,9 +1,6 @@
 <template>
   <article>
-    <p>
-      This feature is experimental. Don't use any money you're not willing to donate.
-    </p>
-    <section id="get-started">
+    <section>
       <no-ssr>
         <ContractPool />
       </no-ssr>
