@@ -295,7 +295,7 @@ ul.messages {
     margin-right: 0.2em;
   }
   span { color: #999; }
-  input[type="submit"] {
+  input[type="submit"], input[type="reset"] {
     font-size: 1.6rem;
     line-height: 1.8rem;
     margin-bottom: 0;
@@ -809,10 +809,16 @@ ul.messages {
     padding: 2em 0;
     margin-top: 2em;
     select { max-width: 100%; }
-    .balance-form {
-      margin-bottom: 2em;
-      form, input { margin-bottom: 0; }
-      small { margin-top: 0; }
+  }
+  .balance-form {
+    margin-bottom: 2em;
+    form, input { margin-bottom: 0; }
+    small { margin-top: 0; }
+    form, label {
+      display: inline-block;
+    }
+    &>div {
+      margin: 0.5em 0;
     }
   }
 }
@@ -823,17 +829,32 @@ ul.messages {
 
 input.enode { width: 100%; }
 input.amount { width: 10em; }
+span.eth {
+  display: inline-block;
+  background-color: lighten($ethereum-blue, 35%);
+  color: darken($ethereum-blue, 10%);
+  line-height: 35px;
+  padding: 0 8px;
+  vertical-align: baseline;
+  border: 1px solid lighten($ethereum-blue, 20%);
+  border-radius: 3px;
+
+  &::after {
+    content: "ETH";
+    padding-left: 0.5em;
+    color: lighten($ethereum-blue, 10%);
+  }
+}
 label.eth {
   font-size: 1.4rem;
 
   input {
-    padding-right: 3em;
-    //width: 180px;
+    padding-right: 3.5em;
   }
 
   &::after {
     @extend .grey;
-    margin-left: -3.5em;
+    margin-left: -3em;
     content: "ETH";
   }
 }

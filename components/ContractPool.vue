@@ -10,7 +10,7 @@
         </ul>
 
         <div v-if="active">
-          <h3>Current network</h3>
+          <h3>Current Network</h3>
           <p>Network: <strong>{{networkName}}</strong></p>
           <p>Account:
             <select v-model="active.account">
@@ -20,30 +20,36 @@
 
           <div class="balance-form">
             <h3>Balance</h3>
-            <p>
-              <div class="balance">Balance: <span class="eth">{{formatEther(balance.credit || "0")}} ETH</span></div>
-              <div class="deposit">Deposit: <span class="eth">{{formatEther(active.balance)}} ETH</span>
-                <button v-if="active.balance > 0" :disabled="loading" v-on:click="requestWithdraw" style="width: 172px;">Request Withdraw</button>
-              </div>
-            </p>
+            <div>
+              Balance: <span class="eth">{{formatEther(balance.credit || "0")}}</span>
+            </div>
+            <div>
+              Deposit: <span class="eth">{{formatEther(active.balance)}}</span>
+              <form v-if="showAddDeposit" v-on:submit='addBalance' v-on:submit.prevent>
+                <label class="eth"><input type="text" v-model="amount" value="0.2" placeholder="0.2" name="amount" class="amount"/></label>
+                <input type="submit" :disabled="loading" value="Confirm Deposit" class="button-primary"/>
+                <input type="reset" value="Cancel" v-on:click="showAddDeposit=false" />
+              </form>
+              <span v-else>
+                <button v-on:click="showAddDeposit=!showAddDeposit">Add Deposit</button>
+                <button v-if="active.balance > 0" :disabled="loading" v-on:click="requestWithdraw">Request Withdraw</button>
+              </span>
+            </div>
+          </div>
 
-            <form v-on:submit='addBalance' v-on:submit.prevent class="row">
-              <label class="eth"><input type="text" v-model="amount" value="0.2" placeholder="0.2" name="amount" class="amount"/></label>
-              <input type="submit" :disabled="loading" value="Add Balance" class="button-primary"/>
+          <div class="node-ids">
+            <h3>Authorized Nodes</h3>
+            <ul v-if="nodeIDs.length > 0">
+              <li v-for="id in nodeIDs">{{id}}…</li>
+            </ul>
+            <p v-else>Add your first client node to give it permission to use your account's balance.</p>
+
+            <form v-on:submit='whitelist' v-on:submit.prevent class="row">
+              <input type="text" v-model="enode" value="" placeholder="enode://..." name="enode" class="enode"/>
+              <input type="submit" :disabled="loading" value="Add Node" class="button-primary"/>
             </form>
           </div>
 
-          <div class="node-ids" v-if="nodeIDs">
-            <h3>Authorized Nodes:</h3>
-            <ul>
-              <li v-for="id in nodeIDs">{{id}}…</li>
-            </ul>
-          </div>
-
-          <form v-on:submit='whitelist' v-on:submit.prevent class="row">
-            <input type="text" v-model="enode" value="" placeholder="enode://..." name="enode" class="enode"/>
-            <input type="submit" :disabled="loading" value="Add Node" class="button-primary"/>
-          </form>
         </div>
       </div>
     </div>
@@ -92,6 +98,7 @@ async function signedPoolRPC(signer, method, params) {
 export default {
   data() {
     return {
+      showAddDeposit: false,
       loading: false,
       pendingTx: false,
       amount: '0.02',
