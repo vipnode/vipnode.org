@@ -69,7 +69,7 @@ function getContract(provider) {
   return new Contract(address, abi, provider);
 }
 
-const _poolRPCendpoint = "http://localhost:8080";
+const _poolRPCendpoint = "https://pool.vipnode.org/"; // "localhost:8080" for dev
 let _rpcID = 1;
 
 async function poolRPC(method, params) {
