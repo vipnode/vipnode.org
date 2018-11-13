@@ -6,7 +6,7 @@
     <div class="full-width white-background">
       <div class="contract">
         <ul class="messages" v-if="messages.length > 0">
-          <li v-for="msg in messages" :class="msg.kind">{{msg.body}}</li>
+          <li v-for="msg in messages" :class="msg.kind" v-html="msg.body"></li>
         </ul>
 
         <div v-if="active">
@@ -59,13 +59,13 @@
 <script>
 import { providers, utils, Contract, Wallet } from "ethers";
 import Tooltip from "~/components/Tooltip.vue"
+import abi from "./ContractPool_abi.json";
 
 const reNodeID = new RegExp('[0-9a-f]{128}');
 
 function getContract(provider) {
   //const address = "TODO"; // Mainnet
-  const address = "0xb2f8987986259facdc539ac1745f7a0b395972b1"; // Rinkeby
-  const abi = [{"constant":true,"inputs":[],"name":"withdrawInterval","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"_client","type":"address"},{"name":"_minBalance","type":"uint256"}],"name":"checkBalance","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"operator","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"clients","outputs":[{"name":"balance","type":"uint256"},{"name":"timeLocked","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"forceWithdraw","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_client","type":"address"},{"name":"_amount","type":"uint256"},{"name":"_release","type":"bool"}],"name":"opSettle","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_amount","type":"uint256"}],"name":"opWithdraw","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[],"name":"forceSettle","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[],"name":"addBalance","outputs":[],"payable":true,"stateMutability":"payable","type":"function"},{"inputs":[{"name":"_operator","type":"address"}],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":false,"name":"client","type":"address"},{"indexed":false,"name":"timeLocked","type":"uint256"}],"name":"ForceSettle","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"client","type":"address"},{"indexed":false,"name":"balance","type":"uint256"}],"name":"Balance","type":"event"}];
+  const address = "0x0244998de1c9f072aa560b5c0e5221ed7be0b1ec"; // Rinkeby
   return new Contract(address, abi, provider);
 }
 
@@ -95,12 +95,15 @@ async function signedPoolRPC(signer, method, params) {
   return poolRPC(method, [signedParams, ...params]);
 }
 
+function hasWeb3() {
+  return window.web3 !== undefined || window.ethereum !== undefind;
+}
+
 export default {
   data() {
     return {
       showAddDeposit: false,
       loading: false,
-      pendingTx: false,
       amount: '0.02',
       enode: '',
       messages: [],
@@ -122,7 +125,15 @@ export default {
       this.loading = true;
 
       try {
-        await this.loadContractStatus(this.getContract());
+        await this.loadWallet();
+      } catch(e) {
+        this.error('Failed to load wallet. Make sure you have a web3-enabled browser.', err);
+        this.loading = false;
+        return false;
+      }
+
+      try {
+        await this.loadContractStatus();
         await this.loadPoolStatus();
       } catch(e) {
         this.error('Unexpected error occurred. Check console for more details.', e);
@@ -162,14 +173,19 @@ export default {
       const contract = this.getContract();
       if (!contract) return;
 
+      let tx;
       try {
-        this.pendingTx = await contract.addBalance.sendTransaction({value: weiAmount});
+        tx = await this.contract.addBalance({value: weiAmount});
       } catch(err) {
         if (err.message && err.message.indexOf('User denied transaction signature.') !== -1)  {
           return this.warning('Transaction aborted. Try again?')
         }
         return this.error('Smart contract transaction failed.', err);
       }
+
+      this.showAddDeposit = false;
+      this.success("Deposit transaction submitted, it can take a few minutes: <a href=\"" + this.txURL(tx.hash)+ "\">"+ tx.hash +"</a>")
+      // TODO: Subscribe to event for update or autoreload after some time?
     },
     error(msg, exc) {
       this.messages.push({body: msg, kind: 'error'});
@@ -189,17 +205,21 @@ export default {
     getContract() {
       if (this.contract) return this.contract;
       try {
-        this.contract = getContract(this.provider);
+        const signer = this.provider.getSigner(this.active.account);
+        this.contract = getContract(signer);
         return this.contract;
       } catch(err) {
         this.error('Failed to load smart contract. Make sure you have a web3-enabled browser.', err);
         return;
       }
     },
-    async loadContractStatus(contract) {
-      if (!contract) return;
-      if (web3 === undefined) {
+    async loadWallet() {
+      if (!hasWeb3()) {
         return this.error("Please use a web3-enabled browser to execute this smart contract.");
+      }
+      let accounts = [];
+      if (window.ethereum) {
+        accounts = await window.ethereum.enable();
       }
 
       const network = await this.provider.getNetwork();
@@ -207,7 +227,9 @@ export default {
         return this.error("Please switch your wallet from "+ network.name +" to "+ this.networkName +".");
       }
 
-      const accounts = await this.provider.listAccounts();
+      if (accounts.length === 0) {
+        const accounts = await this.provider.listAccounts();
+      }
       if (accounts.length === 0) {
         return this.error("Please unlock your wallet first.");
       }
@@ -217,8 +239,12 @@ export default {
         balance: 0,
       };
 
+      const signer = this.provider.getSigner(this.active.account);
+      this.contract = getContract(signer);
+    },
+    async loadContractStatus() {
       try {
-        const client = await contract.clients(this.active.account)
+        const client = await this.contract.accounts(this.active.account)
         this.active.balance = client[0];
         this.active.timelocked = client[1];
       }catch (err) {
@@ -226,6 +252,9 @@ export default {
       }
     },
     async loadPoolStatus() {
+      if (this.active === null) {
+        return this.error("Failed to load pool status: No account detected, please unlock your wallet first.");
+      }
       try {
         const r = await poolRPC("pool_status", [this.active.account]);
         this.balance = r.balance;
@@ -241,7 +270,13 @@ export default {
   },
   computed: {
     provider() {
-      return new providers.Web3Provider(web3.currentProvider);
+      if (window.ethereum) {
+        return new providers.Web3Provider(window.ethereum);
+      }
+      if (window.web3) {
+        return new providers.Web3Provider(window.web3.currentProvider);
+      }
+      throw new Error("Please use a web3-enabled browser");
     },
   },
   components: { Tooltip },
