@@ -17,7 +17,7 @@ module.exports = {
     ],
     link: [
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=PT+Mono|PT+Sans:400,700' },
-      { rel: 'shortcut icon', href: 'img/icon-32px.png' }
+      { rel: 'shortcut icon', href: '/img/icon-32px.png' }
     ]
   }
 };
