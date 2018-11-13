@@ -69,7 +69,8 @@ function getContract(provider) {
   return new Contract(address, abi, provider);
 }
 
-const _poolRPCendpoint = "https://pool.vipnode.org/"; // "localhost:8080" for dev
+const _poolRPCendpoint = "https://pool.vipnode.org/";
+//const _poolRPCendpoint = "http://localhost:8080/"; // TODO: Switch to nuxt.config.js
 let _rpcID = 1;
 
 async function poolRPC(method, params) {
@@ -165,8 +166,23 @@ export default {
       this.success("Authorized node.");
       await this.loadPoolStatus();
     },
-    requestWithdraw() {
-      this.error("request withdraw: not implemented yet");
+    async requestWithdraw() {
+      if(!confirm("Withdraw fees will be deducted from your balance during settlement. Continue?")) {
+        return
+      }
+      const method = "pool_withdraw";
+      const params = [
+        this.active.account, // Wallet
+        +new Date(), // Nonce
+      ];
+      const signer = this.provider.getSigner(this.active.account);
+      try {
+        await signedPoolRPC(signer, method, params)
+      } catch(err) {
+        return this.error('Failed to request withdraw.', err);
+      }
+
+      this.success("Balance settlement requested, it should process within a few days.");
     },
     async addBalance() {
       const weiAmount = utils.parseUnits(this.amount, 'ether');
