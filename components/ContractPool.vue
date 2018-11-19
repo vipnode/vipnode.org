@@ -137,7 +137,7 @@ export default {
 
       try {
         await this.loadWallet();
-      } catch(e) {
+      } catch(err) {
         this.error('Failed to load wallet. Make sure you have a web3-enabled browser.', err);
         this.loading = false;
         return false;
@@ -146,8 +146,8 @@ export default {
       try {
         await this.loadContractStatus();
         await this.loadPoolStatus();
-      } catch(e) {
-        this.error('Unexpected error occurred. Check console for more details.', e);
+      } catch(err) {
+        this.error('Unexpected error occurred. Check console for more details.', err);
       } finally {
         this.loading = false;
       }
