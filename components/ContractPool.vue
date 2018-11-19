@@ -130,7 +130,10 @@ export default {
     formatEther: utils.formatEther,
     async load() {
       this.messages = [];
+      this.accounts = [];
+      this.contract = null;
       this.loading = true;
+      // TODO: Move provider reset here?
 
       try {
         await this.loadWallet();
