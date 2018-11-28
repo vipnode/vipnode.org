@@ -54,6 +54,8 @@ export default {
       } catch(err) {
         return this.error(err.message, err);
       }
+
+      setTimeout(this.load, 5*60*1000); // Update once every 5 minutes
     },
   },
   mounted() {
