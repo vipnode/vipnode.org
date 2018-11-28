@@ -64,7 +64,9 @@
 </template>
 
 <script>
+
 import { providers, utils, Contract, Wallet } from "ethers";
+import Pool from "~/lib/poolrpc.js";
 import Tooltip from "~/components/Tooltip.vue"
 import abi from "./ContractPool_abi.json";
 
@@ -74,33 +76,6 @@ function getContract(provider) {
   //const address = "TODO"; // Mainnet
   const address = "0x0244998de1c9f072aa560b5c0e5221ed7be0b1ec"; // Rinkeby
   return new Contract(address, abi, provider);
-}
-
-const _poolRPCendpoint = "https://pool.vipnode.org/";
-//const _poolRPCendpoint = "http://localhost:8080/"; // TODO: Switch to nuxt.config.js
-let _rpcID = 1;
-
-async function poolRPC(method, params) {
-  const resp = await fetch(_poolRPCendpoint, {
-    method: 'POST',
-    cors: 'same-origin',
-    body: JSON.stringify({
-      "id": _rpcID++,
-      "method": method,
-      "params": params,
-    }),
-  });
-  const data = await resp.json();
-  if (data.error) {
-    throw new Error(data.error.message);
-  }
-  return data.result;
-}
-
-async function signedPoolRPC(signer, method, params) {
-  const msg = method + JSON.stringify(params);
-  const signedParams = await signer.signMessage(msg);
-  return poolRPC(method, [signedParams, ...params]);
 }
 
 function hasWeb3() {
@@ -167,7 +142,7 @@ export default {
       ];
       const signer = this.provider.getSigner(this.active.account);
       try {
-        await signedPoolRPC(signer, method, params)
+        await Pool.SignedRPC(signer, method, params)
       } catch(err) {
         // TODO: Handle specific errors
         return this.error('Failed to authorize node.', err);
@@ -187,7 +162,7 @@ export default {
       ];
       const signer = this.provider.getSigner(this.active.account);
       try {
-        await signedPoolRPC(signer, method, params)
+        await Pool.SignedRPC(signer, method, params)
       } catch(err) {
         return this.error('Failed to request withdraw.', err);
       }
@@ -282,7 +257,7 @@ export default {
         return this.error("Failed to load pool status: No account detected, please unlock your wallet first.");
       }
       try {
-        const r = await poolRPC("pool_account", [this.active.account]);
+        const r = await Pool.RPC("pool_account", [this.active.account]);
         this.balance = r.balance;
         this.nodeIDs = r.node_short_ids;
       } catch (err) {
