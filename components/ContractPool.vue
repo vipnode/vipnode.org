@@ -145,7 +145,7 @@ export default {
 
       try {
         await this.loadContractStatus();
-        await this.loadPoolStatus();
+        await this.loadPoolAccount();
       } catch(err) {
         this.error('Unexpected error occurred. Check console for more details.', err);
       } finally {
@@ -174,7 +174,7 @@ export default {
       }
 
       this.success("Authorized node.");
-      await this.loadPoolStatus();
+      await this.loadPoolAccount();
     },
     async requestWithdraw() {
       if(!confirm("Withdraw fees will be deducted from your balance during settlement. Continue?")) {
@@ -277,12 +277,12 @@ export default {
         return this.error('Failed to load client balance.', err);
       }
     },
-    async loadPoolStatus() {
+    async loadPoolAccount() {
       if (this.active === null) {
         return this.error("Failed to load pool status: No account detected, please unlock your wallet first.");
       }
       try {
-        const r = await poolRPC("pool_status", [this.active.account]);
+        const r = await poolRPC("pool_account", [this.active.account]);
         this.balance = r.balance;
         this.nodeIDs = r.node_short_ids;
       } catch (err) {
