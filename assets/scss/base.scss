@@ -781,7 +781,7 @@ ul.messages {
 }
 
 /* STATUS PAGE */
-#status-dashboard {
+.dashboard {
   display: grid;
   grid-template-columns: repeat( auto-fit, minmax(250px, 1fr) );
   grid-gap: 1em;
@@ -795,6 +795,10 @@ ul.messages {
     p {
       font-size: 1.4rem;
       margin-bottom: 0;
+    }
+
+    &.meta {
+      background: rgba(0, 0, 0, 0.3);
     }
   }
 }
