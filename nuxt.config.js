@@ -1,5 +1,7 @@
-module.exports = {
-  dev: (process.env.NODE_ENV !== 'production'),
+export default {
+  env: {
+    poolAPI: (process.env.NODE_ENV === 'production') ? 'https://pool.vipnode.org/' : 'http://localhost:8080'
+  },
   build: {
     extractCSS: true
   },
@@ -20,4 +22,4 @@ module.exports = {
       { rel: 'shortcut icon', href: '/img/icon-32px.png' }
     ]
   }
-};
+}
