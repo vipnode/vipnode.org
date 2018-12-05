@@ -47,7 +47,7 @@
         </li>
         <li class="current">
           <div class="icon progress"></div>
-          <h4><a href="https://github.com/vipnode/vipnode.org/issues/5">Version 2: Vipnode Pool</a></h4>
+          <h4><a href="https://github.com/vipnode/vipnode">Version 2: Vipnode Pool</a></h4>
           <p>
             Similar to how mining pools work, vipnode pools will support third-party full nodes to join as hosts and share in the profit from paying vip clients.
             <a href="https://medium.com/vipnode">Progress updates here</a>.
