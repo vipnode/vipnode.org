@@ -39,7 +39,7 @@
             <a href="/#intro" class="button button-primary button-small">Reserve Your vipnode</a>
           </li>
           <li>
-            <a href="https://github.com/vipnode/vipnode.org">Source code</a>
+            <a href="https://github.com/vipnode">Source code</a>
           </li>
           <li>
             <nuxt-link to="/docs">Docs + support</nuxt-link>
