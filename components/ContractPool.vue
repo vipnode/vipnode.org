@@ -137,7 +137,7 @@ export default {
       const method = "pool_addNode";
       const params = [
         this.active.account, // Wallet
-        +new Date(), // Nonce
+        Pool.GetNonce(), // Nonce
         cleanEnode, // NodeID
       ];
       const signer = this.provider.getSigner(this.active.account);
@@ -158,7 +158,7 @@ export default {
       const method = "pool_withdraw";
       const params = [
         this.active.account, // Wallet
-        +new Date(), // Nonce
+        Pool.GetNonce(), // Nonce
       ];
       const signer = this.provider.getSigner(this.active.account);
       try {
