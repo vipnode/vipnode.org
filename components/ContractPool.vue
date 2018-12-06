@@ -36,6 +36,7 @@
               </span>
               <Tooltip>
                 <ul style="min-width: 400px">
+                  <li><strong>Price:</strong> ~0.005 ETH/month/host</li>
                   <li><strong>Deposit fee:</strong> 0 ETH</li>
                   <li><strong>Withdraw fee:</strong> 0.0025 ETH (includes gas fee)</li>
                   <li><strong>Minimum withdraw balance:</strong> 0.005 ETH</li>
