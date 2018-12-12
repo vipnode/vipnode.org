@@ -44,6 +44,17 @@
         <p>{{stats.total_deposit}} wei</p>
       </div>
     </div>
+
+    <div class="hosts" v-if="stats">
+      <h2>Active Hosts</h2>
+      <ul>
+        <li v-for="host in stats.active_hosts">
+          {{host.short_id}}…
+          running {{host.kind}}
+          at block {{host.block_number}}.
+        </li>
+      </ul>
+    </div>
   </article>
 </template>
 
@@ -58,9 +69,6 @@ export default {
     return {
       messages: [],
       stats: null,
-      dump: {
-        loading: true,
-      },
     };
   },
   methods: {
@@ -76,16 +84,19 @@ export default {
         return this.error(err.message, err);
       }
 
-      const now = new Date();
       this.stats = {
         version: r.version,
-        uptime: formatDistance(new Date(r.time_started), now),
+        uptime: this.reltime(r.time_started),
         timestamp: new Date(r.time_updated),
+        active_hosts: r.active_hosts,
       };
       Object.assign(this.stats, r.stats);
 
       setTimeout(this.load, 5*60*1000); // Update once every 5 minutes
     },
+    reltime(ts) {
+      return formatDistance(new Date(ts), new Date());
+    }
   },
   mounted() {
     this.load();

@@ -785,6 +785,7 @@ ul.messages {
   display: grid;
   grid-template-columns: repeat( auto-fit, minmax(250px, 1fr) );
   grid-gap: 1em;
+  margin-bottom: 2em;
   div {
     background-color: rgba(255,255,255,.05);
     padding: 20px 20px 20px 20px;
@@ -801,6 +802,10 @@ ul.messages {
       background: rgba(0, 0, 0, 0.3);
     }
   }
+}
+
+.hosts {
+  font-size: 1.4rem;
 }
 
 #contract-pool {
