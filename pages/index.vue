@@ -11,7 +11,7 @@
         <div class="contract">
           <h2>Vipnode 2.0 Beta is ready for testing!</h2>
           <p>You'll need a terminal and a geth node.</p>
-          <a href="https://github.com/vipnode/vipnode#quickstart" class="button button-primary">Try it now</a>.
+          <a href="https://github.com/vipnode/vipnode#quickstart" class="button button-primary">Try it now</a>
         </div>
       </section>
     </div>
