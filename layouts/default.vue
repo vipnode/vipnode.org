@@ -12,7 +12,7 @@
       <nav class="seven columns">
         <ul>
           <li class="hidden-md-up">
-            <a href="/#intro" class="button-primary button">Reserve</a>
+            <a href="https://github.com/vipnode/vipnode#readme" class="button-primary button">Download</a>
           </li>
           <li>
             <nuxt-link to="/faq">FAQ</nuxt-link>
@@ -24,7 +24,7 @@
             <a href="https://medium.com/vipnode">Blog</a>
           </li>
           <li class="hidden-md-down">
-            <nuxt-link to="/" class="button-primary button">Reserve</nuxt-link>
+            <nuxt-link to="https://github.com/vipnode/vipnode#readme" class="button-primary button">Download</nuxt-link>
           </li>
         </ul>
       </nav>
@@ -36,7 +36,7 @@
       <nav class="row">
         <ul class="six columns">
           <li>
-            <a href="/#intro" class="button button-primary button-small">Reserve Your vipnode</a>
+            <a href="https://github.com/vipnode/vipnode#readme" class="button button-primary button-small">Try it now</a>
           </li>
           <li>
             <a href="https://github.com/vipnode">Source code</a>

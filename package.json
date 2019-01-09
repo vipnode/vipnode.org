@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "description": "Economic incentive for running Ethereum full nodes.",
   "dependencies": {
-    "date-fns": "^2.0.0-alpha.25",
-    "ethers": "^4.0.12",
-    "node-sass": "^4.10.0",
-    "nuxt": "^2.2.0",
+    "date-fns": "^2.0.0-alpha.26",
+    "ethers": "^4.0.20",
+    "node-sass": "^4.11.0",
+    "nuxt": "^2.3.4",
     "sass-loader": "^7.1.0"
   },
   "devDependencies": {},
