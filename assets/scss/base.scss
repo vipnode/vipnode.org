@@ -522,7 +522,6 @@ ul.messages {
 .index-form .contract {
   margin-right: 0;
   display: inline-block;
-  margin: 2.5em 0 2.5em 2em;
 }
 
 @media (min-width: 1000px) and (max-width: 1650px  ) {
@@ -531,7 +530,22 @@ ul.messages {
 
 
 #get-started {
+  color: $ethereum-blue;
   background-color: #fff;
+  margin-left: 0;
+  overflow: hidden;
+  small {
+    color: rgba(0, 0, 0, 0.7);
+    font-size: 0.7em;
+  }
+
+  &>div {
+    h2 {
+      color: $ethereum-blue;
+      font-size: 2.5rem;
+    }
+    margin: 2em 2.5em 2em 2.5em;
+  }
 
   p {
     margin-bottom: 1.5em;
@@ -891,3 +905,25 @@ label.eth {
 }
 
 .node-ids li { margin-bottom: 0; }
+
+.hero {
+  #intro {
+    vertical-align: top;
+  }
+
+  @media (min-width: 1000px) {
+    display: flex;
+    #intro {
+      max-width: 40%;
+    }
+  }
+  @media (max-width: 1000px) {
+    #get-started {
+      margin-left: -12%;
+      margin-right: -12%;
+      &> div {
+      }
+    }
+  }
+}
+

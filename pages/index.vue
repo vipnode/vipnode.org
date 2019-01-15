@@ -1,17 +1,20 @@
 <template>
   <article>
-    <div class="row full-width index-form">
-      <section id="intro" class="six columns">
+    <div class="hero">
+      <section id="intro">
         <h2>Vipnode is an <span class="hl1">economic incentive</span> for running <span class="hl2">Ethereum full nodes</span>.</h2>
         <p>The goal is to allow the Ethereum network to remain decentralized by creating a financial marketplace for more people to run full nodes and serve native light clients.</p>
         <p><a href="https://medium.com/@shazow/an-economic-incentive-for-running-ethereum-full-nodes-ecc0c9ebe22" class="button">Read the full story on Medium</a></p>
       </section>
 
-      <section id="get-started" class="six columns">
-        <div class="contract">
+      <section id="get-started">
+        <div>
           <h2>Vipnode 2.0 Beta is ready for testing!</h2>
-          <p>You'll need a terminal and a geth node.</p>
-          <a href="https://github.com/vipnode/vipnode#quickstart" class="button button-primary">Try it now</a>
+          <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/8TSOT68kB7A" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <p>
+            <a href="https://github.com/vipnode/vipnode#quickstart" class="button button-primary">Try it now</a>
+            <small>You'll need a terminal and a geth node.</small>
+          </p>
         </div>
       </section>
     </div>
