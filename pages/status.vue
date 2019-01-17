@@ -24,15 +24,13 @@
         <p>{{stats.latest_block_number}}</p>
       </div>
       <div>
-        <h3>Active Nodes</h3>
-        <p>{{stats.num_active_hosts}} of {{stats.num_total_hosts}} registered nodes</p>
+        <h3>Active Hosts</h3>
+        <p>{{stats.num_active_hosts}} of {{stats.num_total_hosts}} registered hosts</p>
       </div>
-      <!-- Coming soon:
       <div>
         <h3>Active Clients</h3>
         <p>{{stats.num_active_clients}} of {{stats.num_total_clients}} registered clients</p>
       </div>
-      -->
       <div title="Trial balances are nodes that were allowed to accrue a balance without being associated to an account.">
         <h3>Trial Balances</h3>
         <p>{{stats.num_trial_balances}} nodes</p>
