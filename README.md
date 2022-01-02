@@ -2,9 +2,9 @@
 
 Connect instantly with your Ethereum Light Client to a premium VIPNode.
 
-**Status**: v1 is ready and live at https://vipnode.org/, work started on v2 thanks to an Ethereum Foundation grant.
+**Status**: [v2.0 is released](https://medium.com/vipnode/vipnode-2-0-released-9af1d65b4552), work on v3 is suspended.
 
-More details in this blog post: [An economic incentive for running Ethereum Full Nodes](https://medium.com/@shazow/an-economic-incentive-for-running-ethereum-full-nodes-ecc0c9ebe22)
+More background on Vipnode in this blog post: [An economic incentive for running Ethereum Full Nodes](https://medium.com/@shazow/an-economic-incentive-for-running-ethereum-full-nodes-ecc0c9ebe22)
 
 ## vipnode v1: Solo Node
 
@@ -40,6 +40,10 @@ A vipnode pool that third-party full-nodes can join and get proportional payout 
 - vipnode-client will implement an vipnode-pool API to:
   1. Register the current enodeID (if not already registered)
   2. Send back the set of connected peers (to allow time-usage billing), from the client's perspective.
+
+## vipnode v3: TBD
+
+Work on this milestone is suspended until several ecosystem blockers are resolved, see blog post for details: https://medium.com/vipnode/vipnode-2-0-released-9af1d65b4552
 
 
 ## License
