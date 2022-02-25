@@ -2,7 +2,7 @@
 
 Connect instantly with your Ethereum Light Client to a premium VIPNode.
 
-**Status**: [v2.0 is released](https://medium.com/vipnode/vipnode-2-0-released-9af1d65b4552), work on v3 is suspended.
+**Status**: [v2.0 is released](https://medium.com/vipnode/vipnode-2-0-released-9af1d65b4552), work on v3 is suspended: https://medium.com/vipnode/what-happened-to-vipnode-90530fc78018
 
 More background on Vipnode in this blog post: [An economic incentive for running Ethereum Full Nodes](https://medium.com/@shazow/an-economic-incentive-for-running-ethereum-full-nodes-ecc0c9ebe22)
 
